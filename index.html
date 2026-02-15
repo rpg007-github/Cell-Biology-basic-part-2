@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cell Biology II — Enzymes, Metabolism, Cytoskeleton &amp; Motility | Basic Level</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FDF8F0;
+  --bg-alt: #F7F0E4;
+  --bg-card: #FFFFFF;
+  --text: #3D3229;
+  --text-light: #7A6E62;
+  --text-muted: #A89C8E;
+  --accent: #C4713B;
+  --accent-light: #E8A06A;
+  --accent-bg: #FEF3E8;
+  --green: #3A7D5C;
+  --green-light: #E6F4ED;
+  --green-bg: #F0F9F4;
+  --yellow: #B8860B;
+  --yellow-light: #FFF8E1;
+  --yellow-bg: #FFFDF5;
+  --amber: #D4802A;
+  --amber-bg: #FFF4E6;
+  --border: #E8DFD3;
+  --border-light: #F0EAE0;
+  --shadow: 0 2px 12px rgba(61,50,41,0.06);
+  --shadow-hover: 0 4px 20px rgba(61,50,41,0.10);
+  --radius: 10px;
+  --mono: 'JetBrains Mono', monospace;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --red: #C0392B;
+  --red-bg: #FDEDEC;
+  --blue: #2E86AB;
+  --blue-bg: #EBF5FB;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.72;
+  font-weight: 400;
+}
+
+.hero {
+  background: linear-gradient(135deg, #F7F0E4 0%, #FEF3E8 50%, #F0F9F4 100%);
+  border-bottom: 2px solid var(--border);
+  padding: 60px 24px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(196,113,59,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero .badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--green);
+  color: #fff;
+  padding: 5px 18px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.hero .badge-part {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-left: 8px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.hero p {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* TOC */
+.toc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+  margin: 40px auto;
+  box-shadow: var(--shadow);
+}
+.toc h2 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: var(--accent);
+}
+.toc-list { list-style: none; }
+@media(min-width:600px){.toc-list{columns:2;column-gap:32px;}}
+.toc-list li { break-inside:avoid; margin-bottom:8px; }
+.toc-list a {
+  text-decoration:none; color:var(--text); display:flex; align-items:baseline; gap:10px; padding:5px 0; transition:color 0.2s;
+}
+.toc-list a:hover { color:var(--accent); }
+.toc-list .sec-num {
+  font-family:var(--mono); font-size:0.82rem; font-weight:500; color:var(--accent); background:var(--accent-bg); padding:2px 8px; border-radius:4px; flex-shrink:0;
+}
+
+/* NAV TABS */
+.nav-tabs {
+  display:flex; gap:6px; margin:30px auto 0; padding:6px; background:var(--bg-alt); border-radius:12px; border:1px solid var(--border); flex-wrap:wrap; justify-content:center;
+}
+.nav-tab {
+  font-family:var(--sans); font-size:0.92rem; font-weight:600; padding:10px 22px; border:none; border-radius:8px; cursor:pointer; background:transparent; color:var(--text-light); transition:all 0.25s;
+}
+.nav-tab:hover { background:rgba(255,255,255,0.6); color:var(--text); }
+.nav-tab.active { background:var(--bg-card); color:var(--accent); box-shadow:0 1px 6px rgba(0,0,0,0.06); }
+
+.tab-panel { display:none; margin-top:30px; }
+.tab-panel.active { display:block; }
+
+/* SECTIONS */
+.section {
+  background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:36px; margin-bottom:28px; box-shadow:var(--shadow); transition:box-shadow 0.3s;
+}
+.section:hover { box-shadow:var(--shadow-hover); }
+.section-header { display:flex; align-items:baseline; gap:14px; margin-bottom:20px; }
+.section-num {
+  font-family:var(--mono); font-size:0.8rem; font-weight:500; color:var(--accent); background:var(--accent-bg); padding:3px 10px; border-radius:5px; flex-shrink:0;
+}
+.section h2 { font-family:var(--serif); font-size:1.5rem; font-weight:700; color:var(--text); }
+.section h3 { font-family:var(--serif); font-size:1.15rem; font-weight:600; color:var(--text); margin:24px 0 10px; }
+.section p { margin-bottom:14px; }
+
+/* CALLOUTS */
+.callout { border-radius:8px; padding:18px 22px; margin:18px 0; border-left:4px solid; font-size:0.97rem; }
+.callout-title { font-weight:700; font-size:0.88rem; letter-spacing:0.5px; text-transform:uppercase; margin-bottom:6px; }
+.callout.example { background:var(--amber-bg); border-color:var(--amber); }
+.callout.example .callout-title { color:var(--amber); }
+.callout.key { background:var(--green-bg); border-color:var(--green); }
+.callout.key .callout-title { color:var(--green); }
+.callout.warning { background:var(--yellow-bg); border-color:var(--yellow); }
+.callout.warning .callout-title { color:var(--yellow); }
+
+/* VOCAB TABLE */
+.vocab-table { width:100%; border-collapse:collapse; margin:18px 0; font-size:0.95rem; }
+.vocab-table th { text-align:left; font-family:var(--serif); font-weight:600; padding:10px 14px; border-bottom:2px solid var(--border); color:var(--accent); font-size:0.92rem; }
+.vocab-table td { padding:10px 14px; border-bottom:1px solid var(--border-light); vertical-align:top; }
+.vocab-table tr:last-child td { border-bottom:none; }
+.vocab-table .term { font-weight:600; color:var(--text); white-space:nowrap; }
+
+code { font-family:var(--mono); font-size:0.9em; background:var(--bg-alt); padding:2px 7px; border-radius:4px; color:var(--accent); }
+
+/* QUIZ */
+.quiz-progress { background:var(--bg-alt); border-radius:20px; height:8px; margin-bottom:24px; overflow:hidden; }
+.quiz-progress-bar { height:100%; background:var(--accent); border-radius:20px; transition:width 0.4s ease; width:0%; }
+.quiz-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:30px; margin-bottom:20px; box-shadow:var(--shadow); }
+.quiz-card .q-num { font-family:var(--mono); font-size:0.78rem; color:var(--accent); background:var(--accent-bg); padding:2px 8px; border-radius:4px; margin-bottom:12px; display:inline-block; }
+.quiz-card .q-text { font-family:var(--serif); font-size:1.1rem; font-weight:600; margin-bottom:18px; line-height:1.5; }
+.quiz-options { display:flex; flex-direction:column; gap:8px; }
+.quiz-opt {
+  display:flex; align-items:flex-start; gap:12px; padding:12px 16px; border:1.5px solid var(--border); border-radius:8px; cursor:pointer; transition:all 0.2s; background:var(--bg-card);
+}
+.quiz-opt:hover { border-color:var(--accent-light); background:var(--accent-bg); }
+.quiz-opt.selected { border-color:var(--accent); background:var(--accent-bg); }
+.quiz-opt.correct { border-color:var(--green); background:var(--green-bg); }
+.quiz-opt.wrong { border-color:var(--red); background:var(--red-bg); }
+.quiz-opt.disabled { pointer-events:none; opacity:0.85; }
+.quiz-opt .opt-letter {
+  font-family:var(--mono); font-weight:600; font-size:0.85rem; min-width:26px; height:26px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:var(--bg-alt); color:var(--text-light); flex-shrink:0;
+}
+.quiz-opt.correct .opt-letter { background:var(--green); color:#fff; }
+.quiz-opt.wrong .opt-letter { background:var(--red); color:#fff; }
+.quiz-feedback { margin-top:14px; padding:14px 18px; border-radius:8px; font-size:0.94rem; display:none; }
+.quiz-feedback.show { display:block; }
+.quiz-feedback.correct { background:var(--green-bg); border-left:3px solid var(--green); }
+.quiz-feedback.incorrect { background:var(--red-bg); border-left:3px solid var(--red); }
+.quiz-nav { display:flex; justify-content:space-between; align-items:center; margin-top:30px; flex-wrap:wrap; gap:12px; }
+.quiz-btn { font-family:var(--sans); font-weight:600; padding:10px 24px; border:none; border-radius:8px; cursor:pointer; font-size:0.95rem; transition:all 0.2s; }
+.quiz-btn.primary { background:var(--accent); color:#fff; }
+.quiz-btn.primary:hover { background:#A85D2F; }
+.quiz-btn.secondary { background:var(--bg-alt); color:var(--text); border:1px solid var(--border); }
+.quiz-btn.secondary:hover { background:var(--border-light); }
+.quiz-score-card { text-align:center; padding:40px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); }
+.quiz-score-card .score-num { font-family:var(--serif); font-size:3rem; font-weight:800; color:var(--accent); }
+.quiz-score-card .score-label { font-size:1rem; color:var(--text-light); margin-top:4px; }
+
+/* FLASHCARDS */
+.fc-filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+.fc-filter-btn { font-family:var(--sans); font-size:0.85rem; font-weight:600; padding:7px 16px; border:1.5px solid var(--border); border-radius:20px; background:var(--bg-card); cursor:pointer; color:var(--text-light); transition:all 0.2s; }
+.fc-filter-btn:hover { border-color:var(--accent-light); }
+.fc-filter-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+.fc-container { perspective:1000px; min-height:280px; margin-bottom:20px; }
+.fc-card { width:100%; min-height:260px; position:relative; cursor:pointer; transform-style:preserve-3d; transition:transform 0.5s ease; }
+.fc-card.flipped { transform:rotateY(180deg); }
+.fc-face { position:absolute; inset:0; backface-visibility:hidden; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px; text-align:center; }
+.fc-front { background:var(--bg-card); }
+.fc-back { background:var(--green-bg); transform:rotateY(180deg); }
+.fc-label { font-family:var(--mono); font-size:0.72rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-muted); margin-bottom:14px; }
+.fc-front .fc-text { font-family:var(--serif); font-size:1.2rem; font-weight:700; color:var(--text); }
+.fc-back .fc-text { font-size:1.05rem; color:var(--text); line-height:1.6; }
+.fc-category { font-family:var(--mono); font-size:0.72rem; color:var(--accent); background:var(--accent-bg); padding:2px 10px; border-radius:4px; margin-top:16px; }
+.fc-nav { display:flex; justify-content:center; align-items:center; gap:20px; }
+.fc-nav-btn { font-family:var(--sans); font-weight:600; padding:10px 20px; border:1px solid var(--border); border-radius:8px; background:var(--bg-card); cursor:pointer; font-size:0.9rem; transition:all 0.2s; }
+.fc-nav-btn:hover { background:var(--accent-bg); border-color:var(--accent-light); }
+.fc-counter { font-family:var(--mono); font-size:0.9rem; color:var(--text-light); }
+
+/* SHORT ANSWER */
+.sa-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; margin-bottom:24px; box-shadow:var(--shadow); }
+.sa-card .q-num { font-family:var(--mono); font-size:0.78rem; color:var(--green); background:var(--green-bg); padding:2px 8px; border-radius:4px; display:inline-block; margin-bottom:10px; }
+.sa-card .q-text { font-family:var(--serif); font-size:1.05rem; font-weight:600; margin-bottom:14px; }
+.sa-textarea { width:100%; min-height:100px; border:1.5px solid var(--border); border-radius:8px; padding:14px; font-family:var(--sans); font-size:0.95rem; resize:vertical; background:var(--bg); color:var(--text); transition:border-color 0.2s; line-height:1.6; }
+.sa-textarea:focus { outline:none; border-color:var(--accent); }
+.sa-grade-btn { margin-top:10px; font-family:var(--sans); font-weight:600; padding:9px 20px; background:var(--green); color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:0.9rem; transition:background 0.2s; }
+.sa-grade-btn:hover { background:#2E6B4D; }
+.sa-result { margin-top:16px; display:none; }
+.sa-result.show { display:block; }
+.sa-progress-bar { height:10px; background:var(--bg-alt); border-radius:10px; overflow:hidden; margin-bottom:12px; }
+.sa-progress-fill { height:100%; border-radius:10px; transition:width 0.5s ease; }
+.sa-score-label { font-family:var(--mono); font-size:0.88rem; font-weight:600; margin-bottom:10px; }
+.sa-concepts { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+.sa-tag { font-family:var(--mono); font-size:0.75rem; padding:3px 10px; border-radius:4px; font-weight:500; }
+.sa-tag.hit { background:var(--green-bg); color:var(--green); border:1px solid var(--green); }
+.sa-tag.miss { background:var(--bg-alt); color:var(--text-muted); border:1px solid var(--border); }
+.sa-model-toggle { font-family:var(--sans); font-size:0.88rem; font-weight:600; color:var(--accent); background:none; border:none; cursor:pointer; padding:4px 0; text-decoration:underline; text-underline-offset:3px; }
+.sa-model-answer { margin-top:10px; padding:16px; background:var(--blue-bg); border-radius:8px; font-size:0.93rem; line-height:1.65; display:none; border-left:3px solid var(--blue); }
+.sa-model-answer.show { display:block; }
+
+.scroll-top { position:fixed; bottom:24px; right:24px; width:44px; height:44px; background:var(--accent); color:#fff; border:none; border-radius:50%; cursor:pointer; font-size:1.2rem; box-shadow:0 3px 12px rgba(0,0,0,0.15); opacity:0; visibility:hidden; transition:all 0.3s; z-index:100; }
+.scroll-top.show { opacity:1; visibility:visible; }
+.scroll-top:hover { background:#A85D2F; transform:translateY(-2px); }
+
+@media(max-width:640px){
+  .section,.toc,.quiz-card,.sa-card{padding:22px;}
+  .fc-face{padding:22px;}
+  .hero{padding:40px 18px 36px;}
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+.section,.quiz-card,.sa-card,.toc { animation:fadeUp 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="badge">★ Basic Level</span>
+  <span class="badge-part">Part II</span>
+  <h1>Enzymes, Metabolism, Cytoskeleton &amp; Motility</h1>
+  <p>Covering Chapters 6, 9, 10, 11, 13, and 14. This guide builds on your knowledge of cell structure and focuses on how cells catalyze reactions, harvest energy, capture light, and move.</p>
+</div>
+
+<div class="container">
+
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="showTab('study')">📖 Study Guide</button>
+  <button class="nav-tab" onclick="showTab('quiz')">✏️ Quiz</button>
+  <button class="nav-tab" onclick="showTab('flashcards')">🃏 Flashcards</button>
+  <button class="nav-tab" onclick="showTab('shortanswer')">📝 Short Answer</button>
+</div>
+
+<!-- ============ STUDY GUIDE ============ -->
+<div id="tab-study" class="tab-panel active">
+
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <ol class="toc-list">
+    <li><a href="#s1"><span class="sec-num">01</span> Enzymes: The Catalysts of Life</a></li>
+    <li><a href="#s2"><span class="sec-num">02</span> How Enzymes Work</a></li>
+    <li><a href="#s3"><span class="sec-num">03</span> Enzyme Regulation</a></li>
+    <li><a href="#s4"><span class="sec-num">04</span> Glycolysis: Splitting Glucose</a></li>
+    <li><a href="#s5"><span class="sec-num">05</span> Fermentation: Life Without Oxygen</a></li>
+    <li><a href="#s6"><span class="sec-num">06</span> Aerobic Respiration: The Full Harvest</a></li>
+    <li><a href="#s7"><span class="sec-num">07</span> The Electron Transport Chain &amp; ATP Synthase</a></li>
+    <li><a href="#s8"><span class="sec-num">08</span> Photosynthesis: Capturing Light</a></li>
+    <li><a href="#s9"><span class="sec-num">09</span> The Calvin Cycle: Building Sugar</a></li>
+    <li><a href="#s10"><span class="sec-num">10</span> Cytoskeletal Systems</a></li>
+    <li><a href="#s11"><span class="sec-num">11</span> Cellular Movement: Motility &amp; Contractility</a></li>
+  </ol>
+</div>
+
+<!-- SECTION 1: ENZYMES INTRO -->
+<div class="section" id="s1">
+  <div class="section-header"><span class="section-num">01</span><h2>Enzymes: The Catalysts of Life</h2></div>
+  <p>Every chemical reaction in your body, from digesting food to copying DNA, would be impossibly slow at body temperature without help. That help comes from <strong>enzymes</strong>, biological catalysts that speed up reactions without being consumed in the process. Nearly all enzymes are proteins (though a few are RNA molecules called ribozymes). They work by lowering the <strong>activation energy</strong> of a reaction, which is the energy "hump" that molecules must get over before a reaction can proceed. The reaction still releases or absorbs the same total energy; the enzyme simply makes it easier to get started.</p>
+  <p>Think of activation energy like pushing a boulder over a hill. Without an enzyme, the hill is tall and the push is enormous. The enzyme carves a lower pass through the hill so the boulder rolls over with much less effort. The starting point and ending point are the same; only the path changes.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    Hydrogen peroxide (H₂O₂) breaks down into water and oxygen on its own, but extremely slowly. The enzyme <em>catalase</em> in your cells speeds this reaction up by a factor of about 10 million. A single catalase molecule can decompose millions of H₂O₂ molecules per second.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    Enzymes are biological catalysts that speed up reactions by lowering activation energy. They are not used up and do not change the overall energy balance of the reaction.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    Enzymes do NOT add energy to a reaction or change whether a reaction is energetically favorable. They only lower the activation energy barrier so the reaction happens faster.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Enzyme</td><td>A biological catalyst, usually a protein, that speeds up a chemical reaction.</td></tr>
+      <tr><td class="term">Catalyst</td><td>A substance that accelerates a reaction without being permanently altered.</td></tr>
+      <tr><td class="term">Activation Energy</td><td>The minimum energy input needed to start a chemical reaction.</td></tr>
+      <tr><td class="term">Substrate</td><td>The specific molecule(s) an enzyme acts upon.</td></tr>
+      <tr><td class="term">Product</td><td>The molecule(s) that result from an enzymatic reaction.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 2: HOW ENZYMES WORK -->
+<div class="section" id="s2">
+  <div class="section-header"><span class="section-num">02</span><h2>How Enzymes Work</h2></div>
+  <p>Each enzyme has a specially shaped pocket called the <strong>active site</strong> where the substrate binds. The shape of the active site is complementary to the shape of the substrate, which is why enzymes are highly specific: a given enzyme typically catalyzes only one reaction or acts on only one type of molecule. This specificity was originally described as a <strong>lock-and-key model</strong> (the substrate fits the enzyme like a key in a lock), but the more accurate picture is the <strong>induced-fit model</strong>. In induced fit, when the substrate approaches the active site, both the enzyme and substrate change shape slightly to create a tighter, more effective binding. It is less like a rigid lock and more like a handshake, where both hands adjust to grip each other.</p>
+  <p>Once the substrate is bound, the enzyme stabilizes the transition state of the reaction, lowers the activation energy, and the substrate is converted to product. The product then detaches, and the enzyme is free to accept another substrate molecule. This cycle can repeat thousands or even millions of times per second, a rate measured as the enzyme's <strong>turnover number</strong>.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    The digestive enzyme <em>sucrase</em> breaks the disaccharide sucrose (table sugar) into glucose and fructose. Sucrase's active site is shaped to bind sucrose specifically. It will not break down lactose or maltose because those sugars have different shapes.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    Enzymes bind substrates at the active site with high specificity. The induced-fit model describes how both enzyme and substrate adjust shape for optimal binding.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    The lock-and-key model suggests a rigid, perfect fit. Exams often ask for the more modern model: induced fit, which accounts for the flexible shape changes that occur during binding.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Active Site</td><td>The specific region on an enzyme where the substrate binds and the reaction occurs.</td></tr>
+      <tr><td class="term">Lock-and-Key Model</td><td>The older model proposing that the enzyme's active site is a rigid, exact complement to the substrate.</td></tr>
+      <tr><td class="term">Induced-Fit Model</td><td>The current model: both enzyme and substrate change shape slightly upon binding for a tighter fit.</td></tr>
+      <tr><td class="term">Enzyme-Substrate Complex</td><td>The temporary structure formed when the substrate is bound in the enzyme's active site.</td></tr>
+      <tr><td class="term">Turnover Number</td><td>The number of substrate molecules one enzyme can convert to product per second.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 3: ENZYME REGULATION -->
+<div class="section" id="s3">
+  <div class="section-header"><span class="section-num">03</span><h2>Enzyme Regulation</h2></div>
+  <p>Cells do not want every reaction running at full speed all the time. They need to turn enzymes up or down depending on conditions. Several factors influence enzyme activity. <strong>Temperature</strong> affects the rate: warming up generally speeds reactions, but too much heat denatures (unfolds) the protein, destroying the active site. Each enzyme has an <strong>optimal temperature</strong> where it works best. Similarly, <strong>pH</strong> affects enzyme shape, and each enzyme has an <strong>optimal pH</strong>. Pepsin in your stomach works best at a very acidic pH of about 2, while trypsin in the small intestine prefers a pH near 8.</p>
+  <p>Beyond temperature and pH, cells use molecular switches. A <strong>competitive inhibitor</strong> is a molecule that resembles the substrate and binds directly in the active site, blocking the real substrate. A <strong>noncompetitive inhibitor</strong> binds to a different part of the enzyme (an <strong>allosteric site</strong>), changing the enzyme's shape so the active site no longer works properly. Cells also use <strong>allosteric regulation</strong> positively: an activator molecule binds to an allosteric site and improves the enzyme's function. Finally, <strong>feedback inhibition</strong> is a common control strategy where the end product of a metabolic pathway inhibits an enzyme earlier in the pathway, preventing overproduction.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    Imagine an assembly line making toy cars. If you have too many toy cars stacking up at the end, a worker at the beginning of the line gets a signal to slow down or stop. That is feedback inhibition: the final product tells an early enzyme to reduce activity.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    Enzyme activity depends on temperature, pH, and the presence of inhibitors or activators. Feedback inhibition is a key self-regulation strategy in metabolic pathways.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    Competitive inhibitors bind at the active site and CAN be overcome by adding more substrate. Noncompetitive inhibitors bind elsewhere and cannot be overcome by adding more substrate. Do not mix these up on exams.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Denaturation</td><td>The unfolding of a protein due to heat, extreme pH, or other stress, destroying its function.</td></tr>
+      <tr><td class="term">Optimal Temperature/pH</td><td>The temperature or pH at which an enzyme functions most efficiently.</td></tr>
+      <tr><td class="term">Competitive Inhibitor</td><td>A molecule that blocks the active site by mimicking the substrate's shape.</td></tr>
+      <tr><td class="term">Noncompetitive Inhibitor</td><td>A molecule that binds to an allosteric site, changing enzyme shape so the active site cannot function.</td></tr>
+      <tr><td class="term">Allosteric Site</td><td>A regulatory site on an enzyme, distinct from the active site, where inhibitors or activators bind.</td></tr>
+      <tr><td class="term">Feedback Inhibition</td><td>A pathway's end product inhibits an early enzyme, preventing overproduction.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 4: GLYCOLYSIS -->
+<div class="section" id="s4">
+  <div class="section-header"><span class="section-num">04</span><h2>Glycolysis: Splitting Glucose</h2></div>
+  <p>Now that we understand enzymes, we can follow how cells actually harvest energy from food. The first step, shared by virtually every living cell on Earth, is <strong>glycolysis</strong> (literally "sugar splitting"). Glycolysis takes place in the <strong>cytoplasm</strong>, not inside any organelle, and it does not require oxygen. It is a sequence of 10 enzyme-catalyzed reactions that breaks one 6-carbon glucose molecule into two 3-carbon molecules of <strong>pyruvate</strong>.</p>
+  <p>Glycolysis has two phases. The <strong>energy investment phase</strong> (first 5 steps) actually uses 2 ATP to get started, like investing money to make money. The <strong>energy payoff phase</strong> (last 5 steps) produces 4 ATP and 2 NADH. The net gain is therefore <code>2 ATP</code> and <code>2 NADH</code> per glucose. That is a modest yield compared to what comes later in aerobic respiration, but glycolysis is fast and does not need oxygen, which makes it essential for cells in low-oxygen environments.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    During an intense sprint, your muscle cells cannot get oxygen fast enough. They rely heavily on glycolysis for quick ATP production. This is why sprinting can only be sustained for a short time: glycolysis alone does not yield much ATP.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    Glycolysis splits one glucose into two pyruvate in the cytoplasm, producing a net gain of 2 ATP and 2 NADH. It does not require oxygen.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    Students often say glycolysis produces 4 ATP. Technically it does, but 2 ATP were invested at the start. Always report the NET gain: 2 ATP.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Glycolysis</td><td>A 10-step metabolic pathway in the cytoplasm that splits glucose into two pyruvate molecules.</td></tr>
+      <tr><td class="term">Pyruvate</td><td>The 3-carbon molecule produced as the end product of glycolysis.</td></tr>
+      <tr><td class="term">NAD⁺ / NADH</td><td>An electron carrier; NAD⁺ is the oxidized form, NADH is the reduced (electron-loaded) form.</td></tr>
+      <tr><td class="term">Net ATP Yield</td><td>The actual ATP profit after subtracting ATP invested. For glycolysis: 2 ATP per glucose.</td></tr>
+      <tr><td class="term">Anaerobic</td><td>A process that does not require oxygen.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 5: FERMENTATION -->
+<div class="section" id="s5">
+  <div class="section-header"><span class="section-num">05</span><h2>Fermentation: Life Without Oxygen</h2></div>
+  <p>When oxygen is absent or scarce, the cell has a problem: glycolysis produces NADH, but without oxygen there is no way to "recycle" NADH back to NAD⁺ through the electron transport chain. If NAD⁺ runs out, glycolysis grinds to a halt. <strong>Fermentation</strong> solves this by providing an alternative way to regenerate NAD⁺ from NADH, allowing glycolysis to keep running.</p>
+  <p>There are two main types. In <strong>lactic acid fermentation</strong>, pyruvate is converted directly to lactate (lactic acid), and NADH gives up its electrons to become NAD⁺ again. This happens in your muscle cells during intense exercise and also in certain bacteria used to make yogurt. In <strong>alcohol (ethanol) fermentation</strong>, pyruvate is first converted to acetaldehyde (releasing CO₂), and then acetaldehyde is reduced to ethanol while NADH is recycled to NAD⁺. Yeast cells use this pathway, which is why yeast produces alcohol and CO₂ bubbles in bread and beer.</p>
+  <p>Importantly, fermentation itself does not produce any additional ATP. The only ATP comes from glycolysis (net 2 ATP). Fermentation's sole purpose is to regenerate NAD⁺ so glycolysis can continue.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    When you exercise hard and your muscles burn, that burning sensation is associated with lactate buildup from lactic acid fermentation. Your muscles switch to fermentation when oxygen delivery cannot keep up with ATP demand. When you catch your breath, oxygen returns and aerobic respiration resumes.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    Fermentation does not produce extra ATP. Its purpose is to recycle NADH back to NAD⁺ so glycolysis can keep generating 2 ATP per glucose in the absence of oxygen.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    "Fermentation produces ATP" is misleading. The ATP comes from glycolysis, not from fermentation reactions. Fermentation only regenerates NAD⁺.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Fermentation</td><td>An anaerobic process that regenerates NAD⁺ from NADH so glycolysis can continue.</td></tr>
+      <tr><td class="term">Lactic Acid Fermentation</td><td>Pyruvate is reduced to lactate; occurs in muscle cells and some bacteria.</td></tr>
+      <tr><td class="term">Alcohol Fermentation</td><td>Pyruvate is converted to ethanol and CO₂; occurs in yeast.</td></tr>
+      <tr><td class="term">Lactate</td><td>The product of lactic acid fermentation; a 3-carbon molecule.</td></tr>
+      <tr><td class="term">Ethanol</td><td>The 2-carbon alcohol produced in alcohol fermentation.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6: AEROBIC RESPIRATION -->
+<div class="section" id="s6">
+  <div class="section-header"><span class="section-num">06</span><h2>Aerobic Respiration: The Full Harvest</h2></div>
+  <p>When oxygen IS available, cells can extract far more energy from glucose. After glycolysis, each pyruvate enters the mitochondrion and is converted into <strong>acetyl-CoA</strong> (a 2-carbon group attached to coenzyme A), releasing one CO₂ and one NADH per pyruvate. Acetyl-CoA then enters the <strong>citric acid cycle</strong> (also called the Krebs cycle or TCA cycle), a circular series of reactions in the mitochondrial matrix.</p>
+  <p>In each turn of the citric acid cycle, the 2-carbon acetyl group is completely broken down into 2 CO₂, and the energy is captured as 3 NADH, 1 FADH₂, and 1 GTP (equivalent to 1 ATP). Since each glucose produces 2 pyruvate and therefore 2 acetyl-CoA, the cycle turns twice per glucose. Adding it all up through the citric acid cycle (not yet counting the electron transport chain), glucose has been fully oxidized to CO₂, and the cell holds a collection of electron carriers (NADH and FADH₂) loaded with energy.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    Think of the citric acid cycle like wringing out a wet towel. Each twist (reaction) squeezes out a bit more energy (as NADH or FADH₂) until the towel (carbon from glucose) is completely dry (released as CO₂).
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    The citric acid cycle in the mitochondrial matrix fully breaks down acetyl-CoA to CO₂ while loading electron carriers (NADH, FADH₂) with energy for the next stage.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    The citric acid cycle itself produces very little ATP directly (just 1 GTP/ATP per turn). The big ATP payoff comes in the next step, the electron transport chain. Do not overstate the cycle's direct ATP yield.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Acetyl-CoA</td><td>A 2-carbon molecule linked to coenzyme A; the fuel that enters the citric acid cycle.</td></tr>
+      <tr><td class="term">Citric Acid Cycle</td><td>A cycle of reactions in the mitochondrial matrix that oxidizes acetyl-CoA to CO₂, generating NADH, FADH₂, and GTP.</td></tr>
+      <tr><td class="term">Krebs Cycle / TCA Cycle</td><td>Alternate names for the citric acid cycle.</td></tr>
+      <tr><td class="term">FADH₂</td><td>An electron carrier that delivers electrons to the electron transport chain (lower energy than NADH).</td></tr>
+      <tr><td class="term">Mitochondrial Matrix</td><td>The inner compartment of the mitochondrion where the citric acid cycle occurs.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 7: ETC & ATP SYNTHASE -->
+<div class="section" id="s7">
+  <div class="section-header"><span class="section-num">07</span><h2>The Electron Transport Chain &amp; ATP Synthase</h2></div>
+  <p>This is where the big ATP payoff happens. The NADH and FADH₂ generated by glycolysis, pyruvate oxidation, and the citric acid cycle carry high-energy electrons to the <strong>electron transport chain (ETC)</strong>, a series of protein complexes embedded in the <strong>inner mitochondrial membrane</strong>. As electrons are passed from one complex to the next (like a bucket brigade), they release energy at each step. That energy is used to pump hydrogen ions (H⁺) from the matrix into the intermembrane space, creating a concentration gradient, a kind of molecular "dam" of protons.</p>
+  <p>The protons then flow back into the matrix through a special channel protein called <strong>ATP synthase</strong>. As H⁺ ions rush through ATP synthase, it physically spins like a tiny turbine, and this rotation drives the attachment of a phosphate group to ADP, producing ATP. This mechanism is called <strong>oxidative phosphorylation</strong> because oxygen is the final electron acceptor at the end of the chain (combining with electrons and H⁺ to form water), and the phosphorylation of ADP is powered by the proton gradient. The overall yield of aerobic respiration is approximately <code>30-32 ATP per glucose</code>, compared to just 2 from glycolysis alone.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    Imagine a hydroelectric dam. Water (H⁺ ions) builds up behind the dam (inner membrane). When the floodgates open (ATP synthase), the rushing water spins a turbine (the rotary part of ATP synthase) that generates electricity (ATP). Oxygen at the end of the chain is like the river downstream, accepting the spent water.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    The electron transport chain creates a proton gradient; ATP synthase uses that gradient to produce most of the cell's ATP (~30-32 per glucose). Oxygen is the final electron acceptor.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    Without oxygen, the ETC stops because there is nothing to accept the electrons at the end. This is precisely why we need to breathe: oxygen keeps the ETC (and therefore ATP production) running.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Electron Transport Chain</td><td>A series of membrane proteins that pass electrons, using the released energy to pump H⁺ ions.</td></tr>
+      <tr><td class="term">ATP Synthase</td><td>A channel/enzyme that uses the H⁺ gradient to synthesize ATP as protons flow through it.</td></tr>
+      <tr><td class="term">Oxidative Phosphorylation</td><td>ATP production driven by the electron transport chain and chemiosmosis.</td></tr>
+      <tr><td class="term">Chemiosmosis</td><td>The flow of H⁺ ions down their gradient through ATP synthase, powering ATP synthesis.</td></tr>
+      <tr><td class="term">Proton Gradient</td><td>The difference in H⁺ concentration across the inner mitochondrial membrane that stores potential energy.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 8: PHOTOSYNTHESIS LIGHT REACTIONS -->
+<div class="section" id="s8">
+  <div class="section-header"><span class="section-num">08</span><h2>Photosynthesis: Capturing Light</h2></div>
+  <p>Photosynthesis is essentially the reverse of cellular respiration. Instead of breaking down glucose to release energy, photosynthesis uses light energy to build glucose from CO₂ and water. The overall equation is: <code>6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂</code>. This process occurs in <strong>chloroplasts</strong>, organelles found in plant cells and algae. Inside the chloroplast, you find stacks of membrane discs called <strong>thylakoids</strong> (the stacks are called <strong>grana</strong>) and a fluid-filled space surrounding them called the <strong>stroma</strong>.</p>
+  <p>Photosynthesis has two main stages. The <strong>light-dependent reactions</strong> happen in the thylakoid membranes. Pigment molecules, primarily <strong>chlorophyll</strong>, absorb photons of light. This energy excites electrons, which are passed through an electron transport chain in the thylakoid membrane (similar in concept to the mitochondrial ETC). The energy is used to pump H⁺ into the thylakoid interior, and ATP synthase then produces ATP as H⁺ flows back out. Water molecules are split to replace the lost electrons, releasing O₂ as a byproduct. The excited electrons also reduce NADP⁺ to <strong>NADPH</strong>. So the light reactions produce ATP and NADPH, which power the next stage.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    Leaves are green because chlorophyll absorbs red and blue light but reflects green light. If a plant is grown under only green light, it cannot photosynthesize well because chlorophyll barely absorbs green wavelengths.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    The light reactions in the thylakoid membranes use sunlight to split water, produce O₂, and generate ATP and NADPH for the Calvin cycle.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    The oxygen released in photosynthesis comes from water (H₂O), NOT from CO₂. Water is split by the light reactions, and the oxygen atoms leave as O₂ gas.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Chloroplast</td><td>The organelle in plant and algal cells where photosynthesis occurs.</td></tr>
+      <tr><td class="term">Thylakoid</td><td>A membrane disc inside the chloroplast where light-dependent reactions occur.</td></tr>
+      <tr><td class="term">Granum (pl. Grana)</td><td>A stack of thylakoid membranes.</td></tr>
+      <tr><td class="term">Stroma</td><td>The fluid-filled space surrounding the thylakoids in the chloroplast.</td></tr>
+      <tr><td class="term">Chlorophyll</td><td>The primary green pigment that absorbs light energy in photosynthesis.</td></tr>
+      <tr><td class="term">NADPH</td><td>An electron carrier produced in the light reactions, used to power the Calvin cycle.</td></tr>
+      <tr><td class="term">Light-Dependent Reactions</td><td>The stage of photosynthesis that requires light; produces ATP, NADPH, and O₂.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 9: CALVIN CYCLE -->
+<div class="section" id="s9">
+  <div class="section-header"><span class="section-num">09</span><h2>The Calvin Cycle: Building Sugar</h2></div>
+  <p>The second stage of photosynthesis is the <strong>Calvin cycle</strong> (also called the light-independent reactions or "dark reactions," though this name is misleading because it does not require darkness; it simply does not directly use light). The Calvin cycle takes place in the <strong>stroma</strong> of the chloroplast and uses the ATP and NADPH from the light reactions to convert CO₂ into sugar.</p>
+  <p>The cycle has three main phases. First, <strong>carbon fixation</strong>: the enzyme <strong>RuBisCO</strong> attaches CO₂ to a 5-carbon sugar called RuBP, producing two 3-carbon molecules (3-phosphoglycerate, or 3-PGA). Second, <strong>reduction</strong>: ATP and NADPH are used to convert 3-PGA into G3P (glyceraldehyde-3-phosphate), a 3-carbon sugar. Third, <strong>regeneration</strong>: most of the G3P is recycled to regenerate RuBP so the cycle can continue. After three turns of the cycle (fixing 3 CO₂), one net G3P molecule exits, and two G3P molecules can be combined to make one glucose.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    RuBisCO is the most abundant enzyme on Earth because every plant on the planet uses it for carbon fixation. It is estimated that RuBisCO fixes about 100 billion tons of carbon from the atmosphere each year.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    The Calvin cycle uses ATP and NADPH from the light reactions to fix CO₂ into sugar (G3P) in the stroma. RuBisCO is the key enzyme for carbon fixation.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    "Dark reactions" does NOT mean the Calvin cycle happens only in the dark. It happens during the day, alongside the light reactions. It just does not directly require photons of light.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Calvin Cycle</td><td>The cycle of reactions in the stroma that uses ATP and NADPH to fix CO₂ into G3P sugar.</td></tr>
+      <tr><td class="term">Carbon Fixation</td><td>The incorporation of CO₂ into an organic molecule (catalyzed by RuBisCO).</td></tr>
+      <tr><td class="term">RuBisCO</td><td>The enzyme that catalyzes carbon fixation; the most abundant protein on Earth.</td></tr>
+      <tr><td class="term">G3P</td><td>Glyceraldehyde-3-phosphate; the 3-carbon sugar product of the Calvin cycle.</td></tr>
+      <tr><td class="term">Light-Independent Reactions</td><td>Another name for the Calvin cycle; does not directly require light.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 10: CYTOSKELETON -->
+<div class="section" id="s10">
+  <div class="section-header"><span class="section-num">10</span><h2>Cytoskeletal Systems</h2></div>
+  <p>The <strong>cytoskeleton</strong> is a dynamic network of protein filaments that gives the cell its shape, provides mechanical support, organizes internal structures, and enables movement. It is not a fixed scaffold; it is constantly being assembled and disassembled as the cell's needs change. There are three main types of cytoskeletal filaments, each made of different proteins and serving different roles.</p>
+
+  <h3>Microfilaments (Actin Filaments)</h3>
+  <p><strong>Microfilaments</strong> are the thinnest filaments, made of the protein <strong>actin</strong>. They are concentrated just beneath the cell membrane and are responsible for cell shape changes, crawling movement, and the pinching that occurs during cytokinesis (when a dividing cell splits in two). Actin filaments are dynamic: they can polymerize (grow) at one end and depolymerize (shrink) at the other, a process called <strong>treadmilling</strong>.</p>
+
+  <h3>Intermediate Filaments</h3>
+  <p><strong>Intermediate filaments</strong> are medium-thickness filaments made of various fibrous proteins (like keratin in skin cells and vimentin in connective tissue). They are the toughest and most stable of the three types and act as the cell's "ropes," providing mechanical strength and anchoring organelles in place. Unlike microtubules and microfilaments, intermediate filaments are not polar and do not serve as tracks for motor proteins.</p>
+
+  <h3>Microtubules</h3>
+  <p><strong>Microtubules</strong> are the thickest filaments, made of the protein <strong>tubulin</strong> (alpha and beta subunits). They radiate outward from the <strong>centrosome</strong> (the main microtubule-organizing center near the nucleus) and serve as highways for intracellular transport. Motor proteins carry cargo along microtubules. During cell division, microtubules form the <strong>mitotic spindle</strong> that separates chromosomes. Microtubules also form the structural core of cilia and flagella.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    Think of the cytoskeleton like the infrastructure of a city. Microfilaments are the sidewalks and small paths (flexible, near the surface). Intermediate filaments are the steel cables of suspension bridges (strong, durable). Microtubules are the highways and rail lines (major transport routes for moving cargo).
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    Microfilaments (actin) handle shape and movement, intermediate filaments provide mechanical strength, and microtubules (tubulin) serve as transport highways and form the mitotic spindle.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    Students often confuse the three filament types. Remember the size order: microfilaments are thinnest, intermediate filaments are medium, microtubules are thickest. Associate each with its protein: actin, various (keratin, etc.), tubulin.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Microfilament</td><td>Thin actin filaments involved in cell shape, movement, and cytokinesis.</td></tr>
+      <tr><td class="term">Actin</td><td>The protein that polymerizes to form microfilaments.</td></tr>
+      <tr><td class="term">Intermediate Filament</td><td>Medium, rope-like filaments (e.g., keratin) providing mechanical strength.</td></tr>
+      <tr><td class="term">Microtubule</td><td>Thick, hollow tubes of tubulin used for transport, structure, and chromosome separation.</td></tr>
+      <tr><td class="term">Tubulin</td><td>The protein subunit (alpha and beta) that polymerizes to form microtubules.</td></tr>
+      <tr><td class="term">Centrosome</td><td>The main microtubule-organizing center of the cell, located near the nucleus.</td></tr>
+      <tr><td class="term">Treadmilling</td><td>The dynamic process of adding subunits at one end while removing them at the other.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 11: MOTILITY & CONTRACTILITY -->
+<div class="section" id="s11">
+  <div class="section-header"><span class="section-num">11</span><h2>Cellular Movement: Motility &amp; Contractility</h2></div>
+  <p>Cells are not static; many types of cells move, and internal movement is constant in virtually all cells. This section covers the molecular machinery that makes movement possible.</p>
+
+  <h3>Motor Proteins</h3>
+  <p><strong>Motor proteins</strong> are enzymes that convert chemical energy (ATP) into mechanical work. The three main families are <strong>kinesin</strong>, <strong>dynein</strong>, and <strong>myosin</strong>. Kinesin walks along microtubules toward the cell periphery (the "plus end"), carrying vesicles and organelles outward. Dynein walks along microtubules toward the centrosome (the "minus end"), moving cargo inward. Myosin interacts with actin filaments and is best known for its role in muscle contraction, but it also participates in cell crawling and cytokinesis.</p>
+
+  <h3>Cilia and Flagella</h3>
+  <p><strong>Cilia</strong> are short, hair-like projections that beat in coordinated waves. Cells lining your respiratory tract use cilia to sweep mucus and debris upward and out of your lungs. <strong>Flagella</strong> are longer, whip-like appendages; a human sperm cell uses a single flagellum to swim. Both cilia and flagella have an internal structure called the <strong>axoneme</strong>, built from a ring of nine microtubule doublets surrounding a central pair (the "9+2" arrangement). Dynein arms between the doublets slide the microtubules past each other, and because the microtubules are anchored at the base, sliding is converted into bending.</p>
+
+  <h3>Muscle Contraction (Sliding Filament Model)</h3>
+  <p>Skeletal muscle is the most dramatic example of cell motility. Muscle cells (fibers) contain repeating units called <strong>sarcomeres</strong>, the basic contractile units. Each sarcomere contains overlapping thick filaments (made of myosin) and thin filaments (made of actin). During contraction, myosin heads bind to actin, undergo a power stroke that pulls the actin filaments inward, then release and re-cock. This cycle, powered by ATP, slides the thin filaments past the thick filaments, shortening the sarcomere and generating force. This is the <strong>sliding filament model</strong>.</p>
+
+  <div class="callout example">
+    <div class="callout-title">Example</div>
+    Kinesin walking along a microtubule looks remarkably like a person walking. It has two "feet" (heads) that take alternating steps along the microtubule track, each step powered by hydrolyzing one ATP molecule. A single kinesin can carry a vesicle hundreds of nanometers across the cell.
+  </div>
+
+  <div class="callout key">
+    <div class="callout-title">Key Takeaway</div>
+    Motor proteins (kinesin, dynein, myosin) convert ATP into movement. Cilia and flagella use dynein-driven microtubule sliding. Muscle contraction uses the sliding filament model of actin and myosin.
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Common Mistake</div>
+    Kinesin and dynein both walk on microtubules but in opposite directions: kinesin toward the plus end (outward), dynein toward the minus end (inward). Myosin walks on actin, not microtubules. Do not mix up the tracks.
+  </div>
+
+  <table class="vocab-table">
+    <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td class="term">Motor Protein</td><td>A protein that uses ATP to produce mechanical movement along cytoskeletal filaments.</td></tr>
+      <tr><td class="term">Kinesin</td><td>Motor protein that moves cargo toward the plus end of microtubules (outward).</td></tr>
+      <tr><td class="term">Dynein</td><td>Motor protein that moves cargo toward the minus end of microtubules (inward); also powers cilia/flagella.</td></tr>
+      <tr><td class="term">Myosin</td><td>Motor protein that interacts with actin; central to muscle contraction.</td></tr>
+      <tr><td class="term">Cilia</td><td>Short, numerous projections that beat in waves; used for moving fluids past cell surfaces.</td></tr>
+      <tr><td class="term">Flagellum</td><td>A long, whip-like appendage used for propulsion (e.g., sperm cells).</td></tr>
+      <tr><td class="term">Axoneme</td><td>The 9+2 microtubule arrangement forming the core of cilia and flagella.</td></tr>
+      <tr><td class="term">Sarcomere</td><td>The basic contractile unit of muscle, containing overlapping actin and myosin filaments.</td></tr>
+      <tr><td class="term">Sliding Filament Model</td><td>The mechanism of muscle contraction where myosin pulls actin filaments inward, shortening the sarcomere.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- END STUDY TAB -->
+
+<!-- ============ QUIZ TAB ============ -->
+<div id="tab-quiz" class="tab-panel">
+  <div style="margin-bottom:20px">
+    <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar"></div></div>
+    <div id="quizCounter" style="font-family:var(--mono);font-size:0.85rem;color:var(--text-light);text-align:center;margin-bottom:10px;"></div>
+  </div>
+  <div id="quizContainer"></div>
+  <div class="quiz-nav" id="quizNav">
+    <button class="quiz-btn secondary" id="quizPrev" onclick="quizPrev()">← Previous</button>
+    <button class="quiz-btn primary" id="quizNext" onclick="quizNext()">Next →</button>
+  </div>
+  <div id="quizScoreCard" class="quiz-score-card" style="display:none;"></div>
+</div>
+
+<!-- ============ FLASHCARDS TAB ============ -->
+<div id="tab-flashcards" class="tab-panel">
+  <div class="fc-filters" id="fcFilters"></div>
+  <div class="fc-container">
+    <div class="fc-card" id="fcCard" onclick="flipCard()">
+      <div class="fc-face fc-front">
+        <div class="fc-label">Term</div>
+        <div class="fc-text" id="fcFrontText"></div>
+        <div class="fc-category" id="fcFrontCat"></div>
+      </div>
+      <div class="fc-face fc-back">
+        <div class="fc-label">Definition</div>
+        <div class="fc-text" id="fcBackText"></div>
+        <div class="fc-category" id="fcBackCat"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-nav">
+    <button class="fc-nav-btn" onclick="fcPrev()">← Prev</button>
+    <span class="fc-counter" id="fcCounter">1 / 50</span>
+    <button class="fc-nav-btn" onclick="fcNext()">Next →</button>
+  </div>
+</div>
+
+<!-- ============ SHORT ANSWER TAB ============ -->
+<div id="tab-shortanswer" class="tab-panel">
+  <div id="saContainer"></div>
+</div>
+
+</div><!-- container -->
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0})">↑</button>
+
+<script>
+// ===== TAB SWITCHING =====
+function showTab(tab){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top:300,behavior:'smooth'});
+}
+window.addEventListener('scroll',()=>{document.getElementById('scrollTop').classList.toggle('show',window.scrollY>400);});
+
+// ===== QUIZ DATA (50 questions) =====
+const quizData=[
+{q:"What do enzymes do?",opts:["Supply energy to reactions","Speed up reactions by lowering activation energy","Change the products of a reaction","Increase the activation energy"],ans:1,exp:"Enzymes are biological catalysts that lower activation energy, making reactions proceed faster without changing what products are formed."},
+{q:"Activation energy is best defined as:",opts:["The total energy released by a reaction","The energy needed to break down ATP","The minimum energy needed to start a reaction","The energy stored in product molecules"],ans:2,exp:"Activation energy is the energy barrier that must be overcome for a reaction to begin. Enzymes lower this barrier."},
+{q:"The region of an enzyme where the substrate binds is called the:",opts:["Allosteric site","Active site","Inhibitor pocket","Coenzyme"],ans:1,exp:"The active site is the specific pocket on the enzyme where the substrate binds and the catalytic reaction occurs."},
+{q:"The induced-fit model differs from the lock-and-key model in that:",opts:["The enzyme is destroyed after the reaction","Both enzyme and substrate change shape upon binding","The substrate does not enter the active site","No products are formed"],ans:1,exp:"In induced fit, both the enzyme and substrate flex and adjust shape to achieve optimal binding, unlike the rigid lock-and-key model."},
+{q:"A competitive inhibitor works by:",opts:["Binding to the allosteric site","Denaturing the enzyme permanently","Binding directly in the active site, blocking the substrate","Increasing the enzyme's turnover number"],ans:2,exp:"Competitive inhibitors mimic the substrate's shape and occupy the active site, preventing the real substrate from binding."},
+{q:"A noncompetitive inhibitor binds to the:",opts:["Active site","Substrate itself","Allosteric site","Product molecule"],ans:2,exp:"Noncompetitive inhibitors bind to an allosteric site (not the active site), changing the enzyme's shape so the active site no longer functions."},
+{q:"What happens when an enzyme is denatured?",opts:["It works faster","It gains a new active site","It unfolds and loses its shape and function","It becomes a substrate"],ans:2,exp:"Denaturation unfolds the protein structure, destroying the active site. The enzyme can no longer catalyze its reaction."},
+{q:"In feedback inhibition, what inhibits the enzyme?",opts:["The substrate","A competitive inhibitor from outside the cell","The end product of the metabolic pathway","ATP"],ans:2,exp:"In feedback inhibition, the final product of a pathway binds to and inhibits an enzyme earlier in the pathway, preventing overproduction."},
+{q:"Where does glycolysis take place?",opts:["Mitochondrial matrix","Nucleus","Cytoplasm","Thylakoid membrane"],ans:2,exp:"Glycolysis occurs in the cytoplasm of the cell, not inside any organelle."},
+{q:"What is the net ATP yield of glycolysis per glucose molecule?",opts:["0 ATP","2 ATP","4 ATP","36 ATP"],ans:1,exp:"Glycolysis produces 4 ATP total but invests 2 ATP at the start, so the net yield is 2 ATP per glucose."},
+{q:"Glycolysis converts one glucose molecule into:",opts:["Two molecules of pyruvate","One molecule of acetyl-CoA","Six molecules of CO₂","Two molecules of ethanol"],ans:0,exp:"Glycolysis splits one 6-carbon glucose into two 3-carbon pyruvate molecules."},
+{q:"Does glycolysis require oxygen?",opts:["Yes, always","No, it is anaerobic","Only in eukaryotes","Only at high temperatures"],ans:1,exp:"Glycolysis is an anaerobic process; it does not require oxygen and occurs in virtually all living cells."},
+{q:"The main purpose of fermentation is to:",opts:["Produce large amounts of ATP","Generate CO₂ for bread rising","Regenerate NAD⁺ so glycolysis can continue","Destroy pyruvate"],ans:2,exp:"Fermentation's primary role is to recycle NADH back to NAD⁺, allowing glycolysis to keep producing ATP when oxygen is unavailable."},
+{q:"Lactic acid fermentation produces:",opts:["Ethanol and CO₂","Lactate","Acetyl-CoA","Glucose"],ans:1,exp:"In lactic acid fermentation, pyruvate is reduced to lactate while NADH is oxidized to NAD⁺."},
+{q:"Which organism performs alcohol fermentation?",opts:["Humans","Yeast","Plants","All bacteria"],ans:1,exp:"Yeast cells perform alcohol fermentation, converting pyruvate to ethanol and CO₂. This is the basis of brewing and breadmaking."},
+{q:"How much ATP does fermentation itself produce?",opts:["0 ATP","2 ATP","4 ATP","36 ATP"],ans:0,exp:"Fermentation produces zero additional ATP. The 2 net ATP come from glycolysis; fermentation only regenerates NAD⁺."},
+{q:"Pyruvate enters the mitochondrion and is converted to:",opts:["Glucose","Acetyl-CoA","Lactate","FADH₂"],ans:1,exp:"Before the citric acid cycle, pyruvate is oxidized to acetyl-CoA, releasing CO₂ and generating NADH."},
+{q:"The citric acid cycle takes place in the:",opts:["Cytoplasm","Thylakoid","Inner mitochondrial membrane","Mitochondrial matrix"],ans:3,exp:"The citric acid cycle (Krebs cycle) occurs in the mitochondrial matrix, the fluid-filled interior of the mitochondrion."},
+{q:"Per turn of the citric acid cycle, how many NADH are produced?",opts:["1","2","3","4"],ans:2,exp:"Each turn produces 3 NADH, 1 FADH₂, and 1 GTP (equivalent to ATP), and releases 2 CO₂."},
+{q:"What is the role of NADH and FADH₂ in cellular respiration?",opts:["They are waste products","They carry high-energy electrons to the electron transport chain","They directly make glucose","They inhibit enzymes"],ans:1,exp:"NADH and FADH₂ are electron carriers that deliver their electrons to the ETC, where the energy is used to produce ATP."},
+{q:"The electron transport chain is located in the:",opts:["Cytoplasm","Outer mitochondrial membrane","Inner mitochondrial membrane","Nucleus"],ans:2,exp:"The ETC consists of protein complexes embedded in the inner mitochondrial membrane."},
+{q:"What is the final electron acceptor in the electron transport chain?",opts:["NAD⁺","CO₂","Oxygen (O₂)","ATP"],ans:2,exp:"Oxygen accepts electrons at the end of the chain, combining with H⁺ to form water. This is why we breathe oxygen."},
+{q:"ATP synthase produces ATP by:",opts:["Breaking down glucose","Allowing H⁺ ions to flow down their gradient through the enzyme","Combining CO₂ with water","Splitting NADH"],ans:1,exp:"ATP synthase acts like a turbine: the flow of H⁺ ions through it drives the synthesis of ATP from ADP + phosphate."},
+{q:"Chemiosmosis refers to:",opts:["The diffusion of water across a membrane","The flow of H⁺ through ATP synthase to make ATP","The movement of electrons through proteins","Enzyme denaturation"],ans:1,exp:"Chemiosmosis is the process of H⁺ ions flowing down their concentration gradient through ATP synthase, powering ATP production."},
+{q:"Approximately how many ATP molecules are produced per glucose in aerobic respiration?",opts:["2","4","10","30-32"],ans:3,exp:"The total yield of aerobic respiration (glycolysis + citric acid cycle + ETC) is approximately 30-32 ATP per glucose."},
+{q:"The overall equation for photosynthesis is:",opts:["C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O","6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂","6O₂ + C₆H₁₂O₆ → 6CO₂ + ATP","H₂O → H₂ + O₂"],ans:1,exp:"Photosynthesis uses CO₂, water, and light energy to produce glucose and oxygen."},
+{q:"The light-dependent reactions occur in the:",opts:["Stroma","Cytoplasm","Thylakoid membranes","Mitochondrial matrix"],ans:2,exp:"Light-dependent reactions take place in the thylakoid membranes, where chlorophyll and the electron transport chain are located."},
+{q:"The primary pigment in photosynthesis is:",opts:["Melanin","Chlorophyll","Hemoglobin","Carotene"],ans:1,exp:"Chlorophyll is the main photosynthetic pigment. It absorbs red and blue light and reflects green, which is why leaves appear green."},
+{q:"The oxygen produced during photosynthesis comes from:",opts:["CO₂","Glucose","Water (H₂O)","ATP"],ans:2,exp:"Water molecules are split during the light reactions, and the oxygen atoms are released as O₂ gas."},
+{q:"The products of the light-dependent reactions that are used in the Calvin cycle are:",opts:["Glucose and O₂","CO₂ and H₂O","ATP and NADPH","Pyruvate and NADH"],ans:2,exp:"The light reactions produce ATP and NADPH, which provide the energy and electrons needed by the Calvin cycle to fix carbon."},
+{q:"The Calvin cycle occurs in the:",opts:["Thylakoid membrane","Stroma of the chloroplast","Cytoplasm","Mitochondrion"],ans:1,exp:"The Calvin cycle takes place in the stroma, the fluid surrounding the thylakoids inside the chloroplast."},
+{q:"What is carbon fixation?",opts:["Releasing CO₂ into the air","Incorporating CO₂ into an organic molecule","Breaking down glucose","Transporting carbon across the membrane"],ans:1,exp:"Carbon fixation is the process of attaching CO₂ to an organic molecule (RuBP), catalyzed by the enzyme RuBisCO."},
+{q:"The enzyme that catalyzes carbon fixation is:",opts:["ATP synthase","Catalase","RuBisCO","DNA polymerase"],ans:2,exp:"RuBisCO catalyzes the fixation of CO₂ to RuBP, the first step of the Calvin cycle. It is the most abundant enzyme on Earth."},
+{q:"The Calvin cycle is also called the 'dark reactions' because:",opts:["It only happens in darkness","It does not directly require light energy","It destroys chlorophyll","It produces dark pigments"],ans:1,exp:"The Calvin cycle does not directly use photons; it uses ATP and NADPH made by the light reactions. It still occurs during the day."},
+{q:"The three main types of cytoskeletal filaments are:",opts:["Actin, keratin, and collagen","Microfilaments, intermediate filaments, and microtubules","DNA, RNA, and protein","Cilia, flagella, and pili"],ans:1,exp:"The cytoskeleton consists of microfilaments (actin), intermediate filaments (various proteins), and microtubules (tubulin)."},
+{q:"Microfilaments are made of:",opts:["Tubulin","Keratin","Actin","Myosin"],ans:2,exp:"Microfilaments are thin filaments composed of the protein actin, important for cell shape and movement."},
+{q:"Microtubules are made of:",opts:["Actin","Keratin","Collagen","Tubulin"],ans:3,exp:"Microtubules are hollow tubes built from alpha and beta tubulin subunits."},
+{q:"Which cytoskeletal element forms the mitotic spindle during cell division?",opts:["Microfilaments","Intermediate filaments","Microtubules","Myosin"],ans:2,exp:"Microtubules form the mitotic spindle that separates chromosomes during cell division."},
+{q:"Intermediate filaments primarily provide:",opts:["Tracks for motor proteins","Mechanical strength and structural support","Energy for movement","Sites for protein synthesis"],ans:1,exp:"Intermediate filaments are tough, rope-like structures that provide mechanical strength and anchor organelles in place."},
+{q:"The centrosome is the main organizing center for:",opts:["Microfilaments","Intermediate filaments","Microtubules","Ribosomes"],ans:2,exp:"The centrosome organizes microtubules, which radiate outward from it toward the cell periphery."},
+{q:"Kinesin moves cargo along microtubules toward the:",opts:["Minus end (toward centrosome)","Plus end (toward cell periphery)","Nucleus","Golgi apparatus"],ans:1,exp:"Kinesin is a motor protein that walks toward the plus end of microtubules, carrying cargo outward toward the cell surface."},
+{q:"Dynein moves cargo along microtubules toward the:",opts:["Plus end (toward periphery)","Minus end (toward centrosome)","ER","Cell wall"],ans:1,exp:"Dynein walks toward the minus end of microtubules, transporting cargo inward toward the cell center."},
+{q:"Myosin interacts with which filament?",opts:["Microtubules","Intermediate filaments","Actin (microfilaments)","DNA"],ans:2,exp:"Myosin is a motor protein that binds to and walks along actin filaments, most famously in muscle contraction."},
+{q:"The internal structure of cilia and flagella is called the:",opts:["Centrosome","Basal body","Axoneme","Sarcomere"],ans:2,exp:"The axoneme is the 9+2 arrangement of microtubules that forms the core of both cilia and flagella."},
+{q:"The '9+2' arrangement refers to:",opts:["9 actin filaments + 2 myosin","9 microtubule doublets surrounding 2 central microtubules","9 genes + 2 proteins","9 ribosomes + 2 enzymes"],ans:1,exp:"The axoneme has 9 pairs (doublets) of microtubules arranged in a ring around 2 single central microtubules."},
+{q:"Cilia differ from flagella in that cilia are:",opts:["Made of actin instead of tubulin","Shorter and more numerous","Found only in prokaryotes","Used only for sensing, never movement"],ans:1,exp:"Cilia are shorter and often present in large numbers, beating in coordinated waves. Flagella are longer and fewer (often one or two)."},
+{q:"The sliding filament model describes:",opts:["How DNA replicates","How vesicles move along microtubules","How muscle contracts through actin-myosin interaction","How enzymes change shape"],ans:2,exp:"The sliding filament model explains muscle contraction: myosin heads pull actin filaments inward, shortening the sarcomere."},
+{q:"A sarcomere is:",opts:["A type of motor protein","The basic contractile unit of muscle","A microtubule organizing center","An enzyme involved in glycolysis"],ans:1,exp:"A sarcomere is the repeating unit in muscle fibers, bounded by Z-lines, containing overlapping thick (myosin) and thin (actin) filaments."},
+{q:"During muscle contraction, what shortens?",opts:["The thick filaments","The thin filaments","The sarcomere","The myosin heads"],ans:2,exp:"The filaments themselves do not shorten; they slide past each other. The sarcomere shortens as actin is pulled inward by myosin."},
+{q:"All three types of motor proteins (kinesin, dynein, myosin) require _____ for energy.",opts:["Glucose","NADH","ATP","Sunlight"],ans:2,exp:"Motor proteins hydrolyze ATP to produce the conformational changes (power strokes) that generate mechanical movement."}
+];
+
+// ===== QUIZ ENGINE =====
+let quizIdx=0, quizAnswers=new Array(quizData.length).fill(-1), quizLocked=new Array(quizData.length).fill(false);
+
+function renderQuiz(){
+  const c=document.getElementById('quizContainer'),d=quizData[quizIdx],letters=['A','B','C','D'];
+  let h=`<div class="quiz-card"><div class="q-num">Q${quizIdx+1} of ${quizData.length}</div><div class="q-text">${d.q}</div><div class="quiz-options">`;
+  d.opts.forEach((o,i)=>{
+    let cls='';
+    if(quizLocked[quizIdx]){cls='disabled';if(i===d.ans)cls+=' correct';else if(i===quizAnswers[quizIdx]&&i!==d.ans)cls+=' wrong';}
+    else if(quizAnswers[quizIdx]===i)cls='selected';
+    h+=`<div class="quiz-opt ${cls}" onclick="selectOpt(${i})"><span class="opt-letter">${letters[i]}</span><span>${o}</span></div>`;
+  });
+  h+=`</div>`;
+  if(quizLocked[quizIdx]){const ok=quizAnswers[quizIdx]===d.ans;h+=`<div class="quiz-feedback show ${ok?'correct':'incorrect'}">${ok?'✓ Correct!':'✗ Incorrect.'} ${d.exp}</div>`;}
+  h+=`</div>`;c.innerHTML=h;
+  document.getElementById('quizCounter').textContent=`Question ${quizIdx+1} of ${quizData.length}`;
+  document.getElementById('quizProgressBar').style.width=((quizIdx+1)/quizData.length*100)+'%';
+  document.getElementById('quizPrev').style.visibility=quizIdx===0?'hidden':'visible';
+  document.getElementById('quizNext').textContent=quizIdx===quizData.length-1?'See Score':'Next →';
+  document.getElementById('quizNav').style.display='';document.getElementById('quizScoreCard').style.display='none';
+}
+function selectOpt(i){if(quizLocked[quizIdx])return;quizAnswers[quizIdx]=i;quizLocked[quizIdx]=true;renderQuiz();}
+function quizPrev(){if(quizIdx>0){quizIdx--;renderQuiz();}}
+function quizNext(){if(quizIdx<quizData.length-1){quizIdx++;renderQuiz();}else showQuizScore();}
+function showQuizScore(){
+  let s=0;quizData.forEach((d,i)=>{if(quizAnswers[i]===d.ans)s++;});
+  const p=Math.round(s/quizData.length*100),c=p>=80?'var(--green)':p>=60?'var(--amber)':'var(--red)';
+  document.getElementById('quizContainer').innerHTML='';document.getElementById('quizNav').style.display='none';
+  const sc=document.getElementById('quizScoreCard');sc.style.display='block';
+  sc.innerHTML=`<div class="score-num" style="color:${c}">${s} / ${quizData.length}</div><div class="score-label">${p}% — ${p>=80?'Excellent!':p>=60?'Good effort!':'Keep studying!'}</div><button class="quiz-btn primary" style="margin-top:20px" onclick="resetQuiz()">Retake Quiz</button>`;
+}
+function resetQuiz(){quizIdx=0;quizAnswers.fill(-1);quizLocked.fill(false);renderQuiz();}
+
+// ===== FLASHCARD DATA (50 cards) =====
+const fcData=[
+{term:"Enzyme",def:"A biological catalyst (usually a protein) that speeds up reactions by lowering activation energy.",cat:"Enzymes"},
+{term:"Activation Energy",def:"The minimum energy required to start a chemical reaction; enzymes lower this barrier.",cat:"Enzymes"},
+{term:"Active Site",def:"The specific region on an enzyme where the substrate binds and catalysis occurs.",cat:"Enzymes"},
+{term:"Substrate",def:"The molecule(s) that an enzyme acts upon.",cat:"Enzymes"},
+{term:"Induced-Fit Model",def:"The current model: both enzyme and substrate flex to achieve optimal binding at the active site.",cat:"Enzymes"},
+{term:"Competitive Inhibitor",def:"A molecule that blocks the active site by mimicking the substrate.",cat:"Enzymes"},
+{term:"Noncompetitive Inhibitor",def:"A molecule that binds to an allosteric site, distorting the enzyme's active site.",cat:"Enzymes"},
+{term:"Allosteric Site",def:"A regulatory binding site on an enzyme, separate from the active site.",cat:"Enzymes"},
+{term:"Feedback Inhibition",def:"A pathway's end product inhibits an earlier enzyme, preventing overproduction.",cat:"Enzymes"},
+{term:"Denaturation",def:"Loss of protein shape and function due to extreme heat, pH, or other stress.",cat:"Enzymes"},
+{term:"Cofactor",def:"A non-protein helper (metal ion or coenzyme) needed by some enzymes to function.",cat:"Enzymes"},
+{term:"Glycolysis",def:"A 10-step pathway in the cytoplasm that splits glucose into two pyruvate, yielding 2 net ATP and 2 NADH.",cat:"Glycolysis & Fermentation"},
+{term:"Pyruvate",def:"The 3-carbon end product of glycolysis.",cat:"Glycolysis & Fermentation"},
+{term:"NAD⁺ / NADH",def:"An electron carrier; NAD⁺ is oxidized, NADH is the reduced, electron-loaded form.",cat:"Glycolysis & Fermentation"},
+{term:"Fermentation",def:"An anaerobic process that regenerates NAD⁺ from NADH so glycolysis can continue.",cat:"Glycolysis & Fermentation"},
+{term:"Lactic Acid Fermentation",def:"Pyruvate → lactate; occurs in muscles and some bacteria.",cat:"Glycolysis & Fermentation"},
+{term:"Alcohol Fermentation",def:"Pyruvate → ethanol + CO₂; occurs in yeast.",cat:"Glycolysis & Fermentation"},
+{term:"Anaerobic",def:"A process that does not require oxygen.",cat:"Glycolysis & Fermentation"},
+{term:"Acetyl-CoA",def:"A 2-carbon molecule linked to coenzyme A that enters the citric acid cycle.",cat:"Aerobic Respiration"},
+{term:"Citric Acid Cycle",def:"A cyclical pathway in the mitochondrial matrix that oxidizes acetyl-CoA, producing NADH, FADH₂, and GTP.",cat:"Aerobic Respiration"},
+{term:"FADH₂",def:"An electron carrier that delivers electrons to the ETC (lower energy than NADH).",cat:"Aerobic Respiration"},
+{term:"Mitochondrial Matrix",def:"The inner compartment of the mitochondrion; site of the citric acid cycle.",cat:"Aerobic Respiration"},
+{term:"Electron Transport Chain",def:"Protein complexes in the inner mitochondrial membrane that use electron energy to pump H⁺ ions.",cat:"Aerobic Respiration"},
+{term:"ATP Synthase",def:"Enzyme that synthesizes ATP as H⁺ ions flow through it down their concentration gradient.",cat:"Aerobic Respiration"},
+{term:"Oxidative Phosphorylation",def:"ATP production powered by the electron transport chain and chemiosmosis.",cat:"Aerobic Respiration"},
+{term:"Chemiosmosis",def:"The flow of H⁺ ions through ATP synthase, driven by the proton gradient, to produce ATP.",cat:"Aerobic Respiration"},
+{term:"Proton Gradient",def:"The buildup of H⁺ on one side of a membrane, storing potential energy for ATP synthesis.",cat:"Aerobic Respiration"},
+{term:"Chloroplast",def:"The organelle where photosynthesis occurs in plant and algal cells.",cat:"Photosynthesis"},
+{term:"Thylakoid",def:"A membrane disc inside the chloroplast; site of the light-dependent reactions.",cat:"Photosynthesis"},
+{term:"Granum",def:"A stack of thylakoid membranes inside the chloroplast.",cat:"Photosynthesis"},
+{term:"Stroma",def:"The fluid surrounding the thylakoids; site of the Calvin cycle.",cat:"Photosynthesis"},
+{term:"Chlorophyll",def:"The primary green pigment that captures light energy for photosynthesis.",cat:"Photosynthesis"},
+{term:"Light-Dependent Reactions",def:"Photosynthesis stage in thylakoid membranes; uses light to produce ATP, NADPH, and O₂.",cat:"Photosynthesis"},
+{term:"NADPH",def:"Electron carrier produced in the light reactions; powers the Calvin cycle.",cat:"Photosynthesis"},
+{term:"Calvin Cycle",def:"Reactions in the stroma that fix CO₂ into G3P sugar using ATP and NADPH.",cat:"Photosynthesis"},
+{term:"Carbon Fixation",def:"Incorporating CO₂ into an organic molecule, catalyzed by RuBisCO.",cat:"Photosynthesis"},
+{term:"RuBisCO",def:"The enzyme that fixes CO₂; the most abundant protein on Earth.",cat:"Photosynthesis"},
+{term:"G3P",def:"Glyceraldehyde-3-phosphate; the 3-carbon sugar product of the Calvin cycle.",cat:"Photosynthesis"},
+{term:"Microfilament",def:"Thin cytoskeletal filament made of actin; involved in cell shape and movement.",cat:"Cytoskeleton"},
+{term:"Actin",def:"The protein that polymerizes to form microfilaments.",cat:"Cytoskeleton"},
+{term:"Intermediate Filament",def:"Medium, rope-like cytoskeletal filament providing mechanical strength (e.g., keratin).",cat:"Cytoskeleton"},
+{term:"Microtubule",def:"Thick, hollow cytoskeletal tube made of tubulin; used for transport and cell division.",cat:"Cytoskeleton"},
+{term:"Tubulin",def:"Protein subunit (α and β) that assembles into microtubules.",cat:"Cytoskeleton"},
+{term:"Centrosome",def:"The main microtubule-organizing center, located near the nucleus.",cat:"Cytoskeleton"},
+{term:"Kinesin",def:"Motor protein that walks toward the plus end of microtubules (outward), carrying cargo.",cat:"Motility"},
+{term:"Dynein",def:"Motor protein that walks toward the minus end of microtubules (inward); also powers cilia/flagella.",cat:"Motility"},
+{term:"Myosin",def:"Motor protein that interacts with actin filaments; key to muscle contraction.",cat:"Motility"},
+{term:"Axoneme",def:"The 9+2 microtubule arrangement forming the core of cilia and flagella.",cat:"Motility"},
+{term:"Sarcomere",def:"The basic contractile unit of muscle, with overlapping actin and myosin filaments.",cat:"Motility"},
+{term:"Sliding Filament Model",def:"Muscle contraction mechanism where myosin pulls actin inward, shortening the sarcomere.",cat:"Motility"}
+];
+
+// ===== FLASHCARD ENGINE =====
+let fcIdx=0,fcFilter='All',filteredFC=[...fcData];
+function getCategories(){return['All',...new Set(fcData.map(f=>f.cat))];}
+function initFC(){
+  const fDiv=document.getElementById('fcFilters');
+  getCategories().forEach(cat=>{
+    const btn=document.createElement('button');btn.className='fc-filter-btn'+(cat==='All'?' active':'');btn.textContent=cat;
+    btn.onclick=()=>{fcFilter=cat;document.querySelectorAll('.fc-filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');filteredFC=cat==='All'?[...fcData]:fcData.filter(f=>f.cat===cat);fcIdx=0;document.getElementById('fcCard').classList.remove('flipped');renderFC();};
+    fDiv.appendChild(btn);
+  });renderFC();
+}
+function renderFC(){if(!filteredFC.length)return;const f=filteredFC[fcIdx];document.getElementById('fcFrontText').textContent=f.term;document.getElementById('fcBackText').textContent=f.def;document.getElementById('fcFrontCat').textContent=f.cat;document.getElementById('fcBackCat').textContent=f.cat;document.getElementById('fcCounter').textContent=`${fcIdx+1} / ${filteredFC.length}`;}
+function flipCard(){document.getElementById('fcCard').classList.toggle('flipped');}
+function fcPrev(){if(fcIdx>0){fcIdx--;document.getElementById('fcCard').classList.remove('flipped');renderFC();}}
+function fcNext(){if(fcIdx<filteredFC.length-1){fcIdx++;document.getElementById('fcCard').classList.remove('flipped');renderFC();}}
+
+// ===== SHORT ANSWER DATA (12 questions) =====
+const saData=[
+{q:"Explain what enzymes are and how they speed up chemical reactions. Include the concept of activation energy.",
+concepts:[
+  {name:"Enzymes are biological catalysts",weight:3,patterns:[/biolog.*catalyst/i,/catalyst.*protein/i,/enzyme.*speed/i,/enzyme.*catalyst/i]},
+  {name:"Lower activation energy",weight:3,patterns:[/lower.*activation/i,/reduc.*activation/i,/decreas.*activation.*energy/i]},
+  {name:"Not consumed in the reaction",weight:2,patterns:[/not.*consumed/i,/not.*used\s+up/i,/unchanged/i,/reusab/i,/recycl/i]},
+  {name:"Activation energy is energy barrier to start reaction",weight:2,patterns:[/activation.*energy.*barrier/i,/energy.*needed.*start/i,/minimum.*energy/i,/energy.*hump/i]}
+],model:"Enzymes are biological catalysts, usually proteins, that speed up chemical reactions without being consumed. They work by lowering the activation energy, the minimum energy needed to start a reaction. The reaction's overall energy change is unaffected, but by reducing the barrier, the reaction proceeds much faster. The enzyme can be reused for many reaction cycles."},
+{q:"Compare the lock-and-key model with the induced-fit model of enzyme function.",
+concepts:[
+  {name:"Lock-and-key: rigid/exact fit",weight:2,patterns:[/lock.*key.*rigid/i,/lock.*key.*exact/i,/rigid.*fit/i,/perfect.*fit/i,/lock.*key/i]},
+  {name:"Induced-fit: both enzyme and substrate change shape",weight:3,patterns:[/induced.*fit.*change\s+shape/i,/both.*change/i,/flex/i,/adjust/i,/induced.*fit/i]},
+  {name:"Induced-fit is the more accepted model",weight:2,patterns:[/more\s+(accurate|accepted|modern|current)/i,/better.*model/i,/prefer/i]},
+  {name:"Active site involved",weight:1,patterns:[/active\s+site/i]}
+],model:"The lock-and-key model proposes that the enzyme's active site is a rigid, exact match for the substrate, like a key fitting a lock. The induced-fit model, which is more widely accepted today, proposes that both the enzyme and substrate change shape slightly upon binding, creating a tighter and more effective interaction. The induced-fit model better explains how enzymes stabilize the transition state."},
+{q:"Describe glycolysis: where it occurs, what it starts with, what it produces, and whether it requires oxygen.",
+concepts:[
+  {name:"Occurs in the cytoplasm",weight:2,patterns:[/cytoplasm/i,/cytosol/i]},
+  {name:"Starts with glucose",weight:2,patterns:[/start.*glucose/i,/glucose.*split/i,/break.*glucose/i,/one\s+glucose/i]},
+  {name:"Produces 2 pyruvate",weight:3,patterns:[/two\s+pyruvate/i,/2\s+pyruvate/i,/pyruvate/i]},
+  {name:"Net 2 ATP and 2 NADH",weight:2,patterns:[/2\s+ATP/i,/net.*2/i,/two\s+ATP/i,/NADH/i]},
+  {name:"Does not require oxygen (anaerobic)",weight:2,patterns:[/no.*oxygen/i,/anaerobic/i,/without\s+oxygen/i,/doesn'?t.*require.*oxygen/i]}
+],model:"Glycolysis is a 10-step pathway that occurs in the cytoplasm. It takes one 6-carbon glucose molecule and splits it into two 3-carbon pyruvate molecules. The net products are 2 ATP and 2 NADH per glucose. Glycolysis does not require oxygen, making it an anaerobic process that occurs in virtually all living cells."},
+{q:"Explain the purpose of fermentation and describe the two main types.",
+concepts:[
+  {name:"Regenerates NAD⁺ from NADH",weight:3,patterns:[/regenerat.*NAD/i,/recycl.*NAD/i,/NAD\+/i,/NADH.*NAD/i,/convert.*NADH/i]},
+  {name:"Allows glycolysis to continue without oxygen",weight:2,patterns:[/glycolysis.*continue/i,/keep.*glycolysis/i,/without\s+oxygen/i,/anaerobic/i]},
+  {name:"Lactic acid: pyruvate → lactate",weight:2,patterns:[/lactic.*acid/i,/lactate/i,/muscle/i]},
+  {name:"Alcohol: pyruvate → ethanol + CO₂",weight:2,patterns:[/alcohol/i,/ethanol/i,/yeast/i,/CO2/i]},
+  {name:"Fermentation does not produce extra ATP",weight:1,patterns:[/no.*extra.*ATP/i,/no.*additional.*ATP/i,/zero.*ATP/i,/doesn'?t.*produc.*ATP/i]}
+],model:"Fermentation regenerates NAD⁺ from NADH, which allows glycolysis to continue producing ATP when oxygen is unavailable. Fermentation itself does not produce additional ATP. The two main types are lactic acid fermentation, where pyruvate is reduced to lactate (in muscles and some bacteria), and alcohol fermentation, where pyruvate is converted to ethanol and CO₂ (in yeast)."},
+{q:"Describe the citric acid cycle: where it occurs, what enters, and what it produces.",
+concepts:[
+  {name:"Occurs in mitochondrial matrix",weight:2,patterns:[/mitochondrial\s+matrix/i,/matrix/i,/inside.*mitochondri/i]},
+  {name:"Acetyl-CoA enters",weight:3,patterns:[/acetyl.*CoA/i,/acetyl/i]},
+  {name:"Produces NADH and FADH₂",weight:2,patterns:[/NADH/i,/FADH/i,/electron\s+carrier/i]},
+  {name:"Releases CO₂",weight:2,patterns:[/CO2/i,/carbon\s+dioxide/i,/releas.*CO/i]},
+  {name:"Produces GTP/ATP (small amount)",weight:1,patterns:[/GTP/i,/1\s+ATP/i,/small.*ATP/i]}
+],model:"The citric acid cycle occurs in the mitochondrial matrix. Acetyl-CoA (a 2-carbon unit derived from pyruvate) enters the cycle and is fully oxidized to CO₂. Each turn produces 3 NADH, 1 FADH₂, 1 GTP (equivalent to ATP), and releases 2 CO₂. Since two acetyl-CoA enter per glucose, the cycle turns twice. The main value is loading electron carriers for the ETC."},
+{q:"Explain how the electron transport chain and ATP synthase work together to produce ATP.",
+concepts:[
+  {name:"ETC passes electrons through protein complexes",weight:2,patterns:[/electron.*transport/i,/protein\s+complex/i,/pass.*electron/i,/ETC/i]},
+  {name:"Energy used to pump H⁺ ions across membrane",weight:3,patterns:[/pump.*H\+/i,/pump.*hydrogen/i,/pump.*proton/i,/H\+.*gradient/i,/proton\s+gradient/i]},
+  {name:"H⁺ flows through ATP synthase",weight:3,patterns:[/ATP\s+synthase/i,/flow.*through/i,/H\+.*ATP/i]},
+  {name:"O₂ is the final electron acceptor",weight:2,patterns:[/oxygen.*final/i,/O2.*accept/i,/final.*electron.*accept/i,/oxygen.*accept/i]},
+  {name:"Chemiosmosis",weight:1,patterns:[/chemiosmosis/i,/oxidative\s+phosphorylation/i]}
+],model:"The electron transport chain consists of protein complexes in the inner mitochondrial membrane. NADH and FADH₂ donate high-energy electrons, which are passed along the chain. The energy released is used to pump H⁺ ions from the matrix into the intermembrane space, creating a proton gradient. H⁺ ions then flow back through ATP synthase, which uses this energy to synthesize ATP (chemiosmosis). Oxygen is the final electron acceptor, combining with H⁺ to form water."},
+{q:"Describe the light-dependent reactions of photosynthesis: where they occur and what they produce.",
+concepts:[
+  {name:"Occur in thylakoid membranes",weight:3,patterns:[/thylakoid/i,/thylakoid\s+membrane/i]},
+  {name:"Chlorophyll absorbs light",weight:2,patterns:[/chlorophyll.*absorb/i,/absorb.*light/i,/pigment.*light/i]},
+  {name:"Water is split, releasing O₂",weight:2,patterns:[/water.*split/i,/split.*water/i,/H2O.*split/i,/O2.*releas/i,/oxygen.*releas/i]},
+  {name:"Produce ATP and NADPH",weight:3,patterns:[/ATP.*NADPH/i,/NADPH.*ATP/i,/produc.*ATP/i,/produc.*NADPH/i]}
+],model:"The light-dependent reactions take place in the thylakoid membranes of the chloroplast. Chlorophyll absorbs light energy, which excites electrons. These electrons pass through an electron transport chain, generating ATP and reducing NADP⁺ to NADPH. Water is split to replace lost electrons, releasing O₂ as a byproduct. The ATP and NADPH are then used by the Calvin cycle."},
+{q:"Explain the Calvin cycle: where it occurs, what enzyme is key, and what it produces.",
+concepts:[
+  {name:"Occurs in the stroma",weight:2,patterns:[/stroma/i]},
+  {name:"RuBisCO fixes CO₂",weight:3,patterns:[/RuBisCO/i,/rubisco/i,/fix.*CO2/i,/carbon\s+fixation/i]},
+  {name:"Uses ATP and NADPH from light reactions",weight:2,patterns:[/ATP.*NADPH/i,/use.*ATP/i,/use.*NADPH/i,/light\s+reaction/i]},
+  {name:"Produces G3P (sugar)",weight:2,patterns:[/G3P/i,/sugar/i,/glucose/i,/glyceraldehyde/i]}
+],model:"The Calvin cycle occurs in the stroma of the chloroplast. The key enzyme RuBisCO catalyzes carbon fixation, attaching CO₂ to a 5-carbon molecule. Using ATP and NADPH from the light reactions, the cycle reduces and rearranges these carbons to produce G3P, a 3-carbon sugar that can be used to build glucose and other organic molecules."},
+{q:"Compare the three types of cytoskeletal filaments: microfilaments, intermediate filaments, and microtubules.",
+concepts:[
+  {name:"Microfilaments: thinnest, made of actin, cell shape/movement",weight:3,patterns:[/microfilament.*actin/i,/actin.*thin/i,/microfilament.*shape/i,/microfilament.*movement/i]},
+  {name:"Intermediate filaments: medium, mechanical strength",weight:2,patterns:[/intermediate.*strength/i,/intermediate.*mechanical/i,/intermediate.*tough/i,/keratin/i]},
+  {name:"Microtubules: thickest, made of tubulin, transport/division",weight:3,patterns:[/microtubule.*tubulin/i,/microtubule.*thick/i,/microtubule.*transport/i,/microtubule.*division/i,/mitotic\s+spindle/i]}
+],model:"Microfilaments are the thinnest, composed of actin, and handle cell shape changes and movement. Intermediate filaments are medium-sized, made of various proteins like keratin, and provide mechanical strength and structural support. Microtubules are the thickest, built from tubulin subunits, and serve as transport highways for motor proteins and form the mitotic spindle during cell division."},
+{q:"Describe how kinesin and dynein differ in their function along microtubules.",
+concepts:[
+  {name:"Both are motor proteins on microtubules",weight:2,patterns:[/motor\s+protein/i,/both.*microtubule/i,/walk.*microtubule/i]},
+  {name:"Kinesin moves toward plus end (outward/periphery)",weight:3,patterns:[/kinesin.*plus/i,/kinesin.*outward/i,/kinesin.*peripher/i]},
+  {name:"Dynein moves toward minus end (inward/centrosome)",weight:3,patterns:[/dynein.*minus/i,/dynein.*inward/i,/dynein.*centrosome/i,/dynein.*center/i]},
+  {name:"Both use ATP",weight:1,patterns:[/ATP/i,/energy/i]}
+],model:"Kinesin and dynein are both motor proteins that walk along microtubules using ATP. They differ in direction: kinesin moves cargo toward the plus end of microtubules (outward, toward the cell periphery), while dynein moves cargo toward the minus end (inward, toward the centrosome near the nucleus). This two-way traffic system allows the cell to transport vesicles and organelles in both directions."},
+{q:"Explain the sliding filament model of muscle contraction.",
+concepts:[
+  {name:"Sarcomere contains actin (thin) and myosin (thick) filaments",weight:2,patterns:[/sarcomere/i,/actin.*myosin/i,/thin.*thick/i,/myosin.*actin/i]},
+  {name:"Myosin heads bind actin and pull (power stroke)",weight:3,patterns:[/myosin.*bind.*actin/i,/power\s+stroke/i,/myosin.*pull/i,/cross.*bridge/i]},
+  {name:"Filaments slide past each other",weight:3,patterns:[/slid.*past/i,/slide.*filament/i,/filament.*slide/i,/pull.*inward/i]},
+  {name:"Sarcomere shortens but filaments stay the same length",weight:2,patterns:[/sarcomere.*shorten/i,/shorten.*sarcomere/i,/filament.*same\s+length/i,/don'?t.*shorten/i]},
+  {name:"ATP provides energy",weight:1,patterns:[/ATP/i,/energy/i]}
+],model:"In the sliding filament model, each sarcomere contains overlapping thick (myosin) and thin (actin) filaments. During contraction, myosin heads bind to actin, perform a power stroke that pulls actin inward, then release and re-cock. This sliding of filaments past each other shortens the sarcomere and generates force. The filaments themselves do not change length. ATP powers each cycle of the myosin cross-bridge."},
+{q:"Compare aerobic respiration and fermentation in terms of location, oxygen requirement, and ATP yield.",
+concepts:[
+  {name:"Aerobic: requires oxygen",weight:2,patterns:[/aerobic.*oxygen/i,/requir.*oxygen/i,/need.*oxygen/i]},
+  {name:"Aerobic: occurs in mitochondria (and cytoplasm for glycolysis)",weight:2,patterns:[/mitochondri/i,/aerobic.*mitochond/i]},
+  {name:"Aerobic: ~30-32 ATP total",weight:2,patterns:[/30.*32/i,/30.*ATP/i,/36.*ATP/i,/many.*more.*ATP/i,/much.*more.*ATP/i]},
+  {name:"Fermentation: anaerobic/no oxygen",weight:2,patterns:[/ferment.*no.*oxygen/i,/ferment.*anaerob/i,/without.*oxygen/i]},
+  {name:"Fermentation: cytoplasm only, yields only 2 ATP",weight:2,patterns:[/ferment.*cytoplasm/i,/ferment.*2\s+ATP/i,/only\s+2/i]}
+],model:"Aerobic respiration requires oxygen, occurs across the cytoplasm (glycolysis) and mitochondria (citric acid cycle and ETC), and yields approximately 30-32 ATP per glucose. Fermentation is anaerobic (no oxygen needed), occurs only in the cytoplasm, and yields only 2 net ATP (from glycolysis alone). Fermentation's role is to regenerate NAD⁺, not to produce ATP directly."}
+];
+
+// ===== SHORT ANSWER GRADING =====
+function gradeSA(idx){
+  const answer=document.getElementById('sa-text-'+idx).value.trim();if(!answer)return;
+  const q=saData[idx];let totalW=0,earnedW=0;const results=[];
+  q.concepts.forEach(c=>{totalW+=c.weight;const hit=c.patterns.some(p=>p.test(answer));if(hit)earnedW+=c.weight;results.push({name:c.name,hit});});
+  const wc=answer.split(/\s+/).length;let bonus=wc>=50?0.05:wc>=30?0.02:0;
+  let pct=Math.min(100,Math.round((earnedW/totalW)*100+bonus*100));
+  let color=pct>=80?'var(--green)':pct>=60?'var(--amber)':'var(--red)';
+  const r=document.getElementById('sa-result-'+idx);
+  let h=`<div class="sa-score-label" style="color:${color}">Score: ${pct}%</div><div class="sa-progress-bar"><div class="sa-progress-fill" style="width:${pct}%;background:${color}"></div></div><div class="sa-concepts">`;
+  results.forEach(r=>{h+=`<span class="sa-tag ${r.hit?'hit':'miss'}">${r.hit?'✓':'✗'} ${r.name}</span>`;});
+  h+=`</div><button class="sa-model-toggle" onclick="toggleModel(${idx})">Show Model Answer</button><div class="sa-model-answer" id="sa-model-${idx}">${q.model}</div>`;
+  r.innerHTML=h;r.classList.add('show');
+}
+function toggleModel(idx){document.getElementById('sa-model-'+idx).classList.toggle('show');}
+
+function initSA(){
+  const c=document.getElementById('saContainer');let h='';
+  saData.forEach((q,i)=>{h+=`<div class="sa-card"><div class="q-num">SA ${i+1} of ${saData.length}</div><div class="q-text">${q.q}</div><textarea class="sa-textarea" id="sa-text-${i}" placeholder="Type your answer here..."></textarea><button class="sa-grade-btn" onclick="gradeSA(${i})">Grade Answer</button><div class="sa-result" id="sa-result-${i}"></div></div>`;});
+  c.innerHTML=h;
+}
+
+document.addEventListener('DOMContentLoaded',()=>{renderQuiz();initFC();initSA();});
+</script>
+</body>
+</html>
