@@ -268,9 +268,40 @@ code { font-family:var(--mono); font-size:0.9em; background:var(--bg-alt); paddi
 }
 @keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
 .section,.quiz-card,.sa-card,.toc { animation:fadeUp 0.4s ease both; }
+
+/* ─── WCAG 2.1 AA: Visible focus indicators ─── */
+:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+.tab-btn:focus-visible, .nav-btn:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+/* ─── Skip link ─── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: #005fcc;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0 0 6px 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 
 <div class="hero">
   <span class="badge">★ Basic Level</span>
@@ -279,7 +310,7 @@ code { font-family:var(--mono); font-size:0.9em; background:var(--bg-alt); paddi
   <p>Covering Chapters 6, 9, 10, 11, 13, and 14. This guide builds on your knowledge of cell structure and focuses on how cells catalyze reactions, harvest energy, capture light, and move.</p>
 </div>
 
-<div class="container">
+<div class="container" id="main-content" role="main">
 
 <div class="nav-tabs">
   <button class="nav-tab active" onclick="showTab('study')">📖 Study Guide</button>
