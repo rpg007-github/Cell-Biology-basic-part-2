@@ -268,24 +268,55 @@ code { font-family:var(--mono); font-size:0.9em; background:var(--bg-alt); paddi
 }
 @keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
 .section,.quiz-card,.sa-card,.toc { animation:fadeUp 0.4s ease both; }
+
+/* ─── WCAG 2.1 AA: Visible focus indicators ─── */
+:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+.tab-btn:focus-visible, .nav-btn:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 2px !important;
+}
+/* ─── Skip link ─── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: #005fcc;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0 0 6px 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 
 <div class="hero">
-  <span class="badge">★ Basic Level</span>
+  <span class="badge"><span aria-hidden="true">★</span> Basic Level</span>
   <span class="badge-part">Part II</span>
   <h1>Enzymes, Metabolism, Cytoskeleton &amp; Motility</h1>
   <p>Covering Chapters 6, 9, 10, 11, 13, and 14. This guide builds on your knowledge of cell structure and focuses on how cells catalyze reactions, harvest energy, capture light, and move.</p>
 </div>
 
-<div class="container">
+<div class="container" id="main-content" role="main">
 
 <div class="nav-tabs">
-  <button class="nav-tab active" onclick="showTab('study')">📖 Study Guide</button>
-  <button class="nav-tab" onclick="showTab('quiz')">✏️ Quiz</button>
+  <button class="nav-tab active" onclick="showTab('study')"><span aria-hidden="true">📖</span> Study Guide</button>
+  <button class="nav-tab" onclick="showTab('quiz')"><span aria-hidden="true">✏️</span> Quiz</button>
   <button class="nav-tab" onclick="showTab('flashcards')">🃏 Flashcards</button>
-  <button class="nav-tab" onclick="showTab('shortanswer')">📝 Short Answer</button>
+  <button class="nav-tab" onclick="showTab('shortanswer')"><span aria-hidden="true">📝</span> Short Answer</button>
 </div>
 
 <!-- ============ STUDY GUIDE ============ -->
@@ -544,7 +575,7 @@ code { font-family:var(--mono); font-size:0.9em; background:var(--bg-alt); paddi
 <!-- SECTION 8: PHOTOSYNTHESIS LIGHT REACTIONS -->
 <div class="section" id="s8">
   <div class="section-header"><span class="section-num">08</span><h2>Photosynthesis: Capturing Light</h2></div>
-  <p>Photosynthesis is essentially the reverse of cellular respiration. Instead of breaking down glucose to release energy, photosynthesis uses light energy to build glucose from CO₂ and water. The overall equation is: <code>6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂</code>. This process occurs in <strong>chloroplasts</strong>, organelles found in plant cells and algae. Inside the chloroplast, you find stacks of membrane discs called <strong>thylakoids</strong> (the stacks are called <strong>grana</strong>) and a fluid-filled space surrounding them called the <strong>stroma</strong>.</p>
+  <p>Photosynthesis is essentially the reverse of cellular respiration. Instead of breaking down glucose to release energy, photosynthesis uses light energy to build glucose from CO₂ and water. The overall equation is: <code>6CO₂ + 6H₂O + light energy <span aria-hidden="true">→</span> C₆H₁₂O₆ + 6O₂</code>. This process occurs in <strong>chloroplasts</strong>, organelles found in plant cells and algae. Inside the chloroplast, you find stacks of membrane discs called <strong>thylakoids</strong> (the stacks are called <strong>grana</strong>) and a fluid-filled space surrounding them called the <strong>stroma</strong>.</p>
   <p>Photosynthesis has two main stages. The <strong>light-dependent reactions</strong> happen in the thylakoid membranes. Pigment molecules, primarily <strong>chlorophyll</strong>, absorb photons of light. This energy excites electrons, which are passed through an electron transport chain in the thylakoid membrane (similar in concept to the mitochondrial ETC). The energy is used to pump H⁺ into the thylakoid interior, and ATP synthase then produces ATP as H⁺ flows back out. Water molecules are split to replace the lost electrons, releasing O₂ as a byproduct. The excited electrons also reduce NADP⁺ to <strong>NADPH</strong>. So the light reactions produce ATP and NADPH, which power the next stage.</p>
 
   <div class="callout example">
@@ -707,8 +738,8 @@ code { font-family:var(--mono); font-size:0.9em; background:var(--bg-alt); paddi
   </div>
   <div id="quizContainer"></div>
   <div class="quiz-nav" id="quizNav">
-    <button class="quiz-btn secondary" id="quizPrev" onclick="quizPrev()">← Previous</button>
-    <button class="quiz-btn primary" id="quizNext" onclick="quizNext()">Next →</button>
+    <button class="quiz-btn secondary" id="quizPrev" onclick="quizPrev()"><span aria-hidden="true">←</span> Previous</button>
+    <button class="quiz-btn primary" id="quizNext" onclick="quizNext()">Next <span aria-hidden="true">→</span></button>
   </div>
   <div id="quizScoreCard" class="quiz-score-card" style="display:none;"></div>
 </div>
@@ -731,9 +762,9 @@ code { font-family:var(--mono); font-size:0.9em; background:var(--bg-alt); paddi
     </div>
   </div>
   <div class="fc-nav">
-    <button class="fc-nav-btn" onclick="fcPrev()">← Prev</button>
+    <button class="fc-nav-btn" onclick="fcPrev()"><span aria-hidden="true">←</span> Prev</button>
     <span class="fc-counter" id="fcCounter">1 / 50</span>
-    <button class="fc-nav-btn" onclick="fcNext()">Next →</button>
+    <button class="fc-nav-btn" onclick="fcNext()">Next <span aria-hidden="true">→</span></button>
   </div>
 </div>
 
@@ -744,7 +775,7 @@ code { font-family:var(--mono); font-size:0.9em; background:var(--bg-alt); paddi
 
 </div><!-- container -->
 
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0})">↑</button>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0})"><span aria-hidden="true">↑</span></button>
 
 <script>
 // ===== TAB SWITCHING =====
@@ -784,7 +815,7 @@ const quizData=[
 {q:"ATP synthase produces ATP by:",opts:["Breaking down glucose","Allowing H⁺ ions to flow down their gradient through the enzyme","Combining CO₂ with water","Splitting NADH"],ans:1,exp:"ATP synthase acts like a turbine: the flow of H⁺ ions through it drives the synthesis of ATP from ADP + phosphate."},
 {q:"Chemiosmosis refers to:",opts:["The diffusion of water across a membrane","The flow of H⁺ through ATP synthase to make ATP","The movement of electrons through proteins","Enzyme denaturation"],ans:1,exp:"Chemiosmosis is the process of H⁺ ions flowing down their concentration gradient through ATP synthase, powering ATP production."},
 {q:"Approximately how many ATP molecules are produced per glucose in aerobic respiration?",opts:["2","4","10","30-32"],ans:3,exp:"The total yield of aerobic respiration (glycolysis + citric acid cycle + ETC) is approximately 30-32 ATP per glucose."},
-{q:"The overall equation for photosynthesis is:",opts:["C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O","6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂","6O₂ + C₆H₁₂O₆ → 6CO₂ + ATP","H₂O → H₂ + O₂"],ans:1,exp:"Photosynthesis uses CO₂, water, and light energy to produce glucose and oxygen."},
+{q:"The overall equation for photosynthesis is:",opts:["C₆H₁₂O₆ + 6O₂ <span aria-hidden="true">→</span> 6CO₂ + 6H₂O","6CO₂ + 6H₂O + light <span aria-hidden="true">→</span> C₆H₁₂O₆ + 6O₂","6O₂ + C₆H₁₂O₆ <span aria-hidden="true">→</span> 6CO₂ + ATP","H₂O <span aria-hidden="true">→</span> H₂ + O₂"],ans:1,exp:"Photosynthesis uses CO₂, water, and light energy to produce glucose and oxygen."},
 {q:"The light-dependent reactions occur in the:",opts:["Stroma","Cytoplasm","Thylakoid membranes","Mitochondrial matrix"],ans:2,exp:"Light-dependent reactions take place in the thylakoid membranes, where chlorophyll and the electron transport chain are located."},
 {q:"The primary pigment in photosynthesis is:",opts:["Melanin","Chlorophyll","Hemoglobin","Carotene"],ans:1,exp:"Chlorophyll is the main photosynthetic pigment. It absorbs red and blue light and reflects green, which is why leaves appear green."},
 {q:"The oxygen produced during photosynthesis comes from:",opts:["CO₂","Glucose","Water (H₂O)","ATP"],ans:2,exp:"Water molecules are split during the light reactions, and the oxygen atoms are released as O₂ gas."},
@@ -824,12 +855,12 @@ function renderQuiz(){
     h+=`<div class="quiz-opt ${cls}" onclick="selectOpt(${i})"><span class="opt-letter">${letters[i]}</span><span>${o}</span></div>`;
   });
   h+=`</div>`;
-  if(quizLocked[quizIdx]){const ok=quizAnswers[quizIdx]===d.ans;h+=`<div class="quiz-feedback show ${ok?'correct':'incorrect'}">${ok?'✓ Correct!':'✗ Incorrect.'} ${d.exp}</div>`;}
+  if(quizLocked[quizIdx]){const ok=quizAnswers[quizIdx]===d.ans;h+=`<div class="quiz-feedback show ${ok?'correct':'incorrect'}">${ok?'<span aria-hidden="true">✓</span> Correct!':'<span aria-hidden="true">✗</span> Incorrect.'} ${d.exp}</div>`;}
   h+=`</div>`;c.innerHTML=h;
   document.getElementById('quizCounter').textContent=`Question ${quizIdx+1} of ${quizData.length}`;
   document.getElementById('quizProgressBar').style.width=((quizIdx+1)/quizData.length*100)+'%';
   document.getElementById('quizPrev').style.visibility=quizIdx===0?'hidden':'visible';
-  document.getElementById('quizNext').textContent=quizIdx===quizData.length-1?'See Score':'Next →';
+  document.getElementById('quizNext').textContent=quizIdx===quizData.length-1?'See Score':'Next <span aria-hidden="true">→</span>';
   document.getElementById('quizNav').style.display='';document.getElementById('quizScoreCard').style.display='none';
 }
 function selectOpt(i){if(quizLocked[quizIdx])return;quizAnswers[quizIdx]=i;quizLocked[quizIdx]=true;renderQuiz();}
@@ -861,8 +892,8 @@ const fcData=[
 {term:"Pyruvate",def:"The 3-carbon end product of glycolysis.",cat:"Glycolysis & Fermentation"},
 {term:"NAD⁺ / NADH",def:"An electron carrier; NAD⁺ is oxidized, NADH is the reduced, electron-loaded form.",cat:"Glycolysis & Fermentation"},
 {term:"Fermentation",def:"An anaerobic process that regenerates NAD⁺ from NADH so glycolysis can continue.",cat:"Glycolysis & Fermentation"},
-{term:"Lactic Acid Fermentation",def:"Pyruvate → lactate; occurs in muscles and some bacteria.",cat:"Glycolysis & Fermentation"},
-{term:"Alcohol Fermentation",def:"Pyruvate → ethanol + CO₂; occurs in yeast.",cat:"Glycolysis & Fermentation"},
+{term:"Lactic Acid Fermentation",def:"Pyruvate <span aria-hidden="true">→</span> lactate; occurs in muscles and some bacteria.",cat:"Glycolysis & Fermentation"},
+{term:"Alcohol Fermentation",def:"Pyruvate <span aria-hidden="true">→</span> ethanol + CO₂; occurs in yeast.",cat:"Glycolysis & Fermentation"},
 {term:"Anaerobic",def:"A process that does not require oxygen.",cat:"Glycolysis & Fermentation"},
 {term:"Acetyl-CoA",def:"A 2-carbon molecule linked to coenzyme A that enters the citric acid cycle.",cat:"Aerobic Respiration"},
 {term:"Citric Acid Cycle",def:"A cyclical pathway in the mitochondrial matrix that oxidizes acetyl-CoA, producing NADH, FADH₂, and GTP.",cat:"Aerobic Respiration"},
@@ -1017,7 +1048,7 @@ function gradeSA(idx){
   let color=pct>=80?'var(--green)':pct>=60?'var(--amber)':'var(--red)';
   const r=document.getElementById('sa-result-'+idx);
   let h=`<div class="sa-score-label" style="color:${color}">Score: ${pct}%</div><div class="sa-progress-bar"><div class="sa-progress-fill" style="width:${pct}%;background:${color}"></div></div><div class="sa-concepts">`;
-  results.forEach(r=>{h+=`<span class="sa-tag ${r.hit?'hit':'miss'}">${r.hit?'✓':'✗'} ${r.name}</span>`;});
+  results.forEach(r=>{h+=`<span class="sa-tag ${r.hit?'hit':'miss'}">${r.hit?'<span aria-hidden="true">✓</span>':'<span aria-hidden="true">✗</span>'} ${r.name}</span>`;});
   h+=`</div><button class="sa-model-toggle" onclick="toggleModel(${idx})">Show Model Answer</button><div class="sa-model-answer" id="sa-model-${idx}">${q.model}</div>`;
   r.innerHTML=h;r.classList.add('show');
 }
